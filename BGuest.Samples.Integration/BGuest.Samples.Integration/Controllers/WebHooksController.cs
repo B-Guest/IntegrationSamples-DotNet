@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Runtime.Serialization;
 using System.Web.Http;
+using Newtonsoft.Json;
 
 namespace BGuest.Samples.Integration.Controllers
 {
@@ -16,12 +17,10 @@ namespace BGuest.Samples.Integration.Controllers
 
         [Route("requestchanges")]
         [HttpPost]
-        public HttpResponseMessage Post(RequestChangesModel model)
+        public HttpResponseMessage Post(WebHookPayloadModel model)
         {
-            Debug.WriteLine($"Request {model.Operation}:");
-            Debug.WriteLine($"RequestId: {model.RequestId}, SubService: '{model.SubServiceName}', " +
-                            $"SubServiceType: '{model.SubServiceTypeName}', " +
-                            $"PointOfInterest: '{model.PointOfInterestName}'.");
+            var messageString = JsonConvert.SerializeObject(model, Formatting.Indented);
+            Debug.WriteLine(messageString);
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
     }
@@ -39,5 +38,27 @@ namespace BGuest.Samples.Integration.Controllers
 
         [Required, DataMember(IsRequired = true)]
         public string Operation { get; set; }
+    }
+
+    public class StayChangesModel
+    {
+        [Required, DataMember(IsRequired = true)]
+        public int StayId { get; set; }
+
+        [Required, DataMember(IsRequired = true)]
+        public string Operation { get; set; }
+
+        public string Changes { get; set; }
+
+        public string ChangedBy { get; set; }
+    }
+
+    public class WebHookPayloadModel
+    {
+        public string DocumentType { get; set; }
+
+        public RequestChangesModel Request { get; set; }
+
+        public StayChangesModel Stay { get; set; }
     }
 }
