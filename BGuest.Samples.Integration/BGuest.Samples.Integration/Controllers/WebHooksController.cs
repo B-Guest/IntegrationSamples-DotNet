@@ -38,6 +38,8 @@ namespace BGuest.Samples.Integration.Controllers
 
         [Required, DataMember(IsRequired = true)]
         public string Operation { get; set; }
+
+        public string ChangedBy { get; set; }
     }
 
     public class StayChangesModel
