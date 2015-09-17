@@ -3,10 +3,13 @@
 <h4>Webhooks</h4>
 Here's a simple implementation example of an integration webhook. <br/>
 Everytime there's a change in BGuest data, our backend will automatically send a Http POST request to the url you defined 
-for your integration client, with a JSON payload containing the information about these changes and a query string containing the Secret code value that you defined. 
+for your integration client, with a JSON payload containing the information about these changes and a query string containing the Secret code value that you defined.
+<pre>
+<code>
+POST "your-end-point"?secret="your-webhook-secret"
+</code>
+</pre>
 <br/>
-<br/>
-
 Your endpoint should be prepared to receive a JSON payload with the following format: <br/>
 <pre>
 <code>
