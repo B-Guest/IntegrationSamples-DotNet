@@ -1,6 +1,6 @@
 # IntegrationSamples-DotNet
-<h4>B-Guest Integration API usage samples for PMS developers</h4>
-<br/>
+<h3>B-Guest Integration API usage samples for PMS developers</h3>
+<h4>Webhooks</h4>
 Here's a simple implementation example of an integration webhook. <br/>
 Everytime there's a change in BGuest data, our backend will automatically send a Http POST request to the url you defined 
 for your integration client, with a JSON payload containing the information about these changes. 
