@@ -6,7 +6,7 @@ Everytime there's a change in BGuest data, our backend will automatically send a
 for your integration client with a JSON payload containing the information about these changes and a query string containing the secret code value that you defined.
 
 ```
-POST <your-end-point>?secret=<your-webhook-secret>
+POST <your-endpoint>?secret=<your-webhook-secret>
 ```
 
 <br/>
