@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.ModelBinding;
 using BGuest.Samples.Integration.Webhook.Models;
 using Newtonsoft.Json;
 
@@ -11,13 +10,13 @@ namespace BGuest.Samples.Integration.Webhook.Controllers
     public class WebHooksController : ApiController
     {
 
-        [Route("requestchanges")]
+        [Route("changes")]
         [HttpPost]
         public async Task<IHttpActionResult> Post(WebHookPayloadModel model, string secret = null)
         {
-            // Validate secret value
-            Debug.WriteLine($"ApiSecret code received: {secret}");
-            // Call your PMS api or get the full request from the BGuest API here
+            // TODO: Validate secret value
+            Debug.WriteLine($"Secret code received: {secret}");
+            // TODO: Call your PMS api or get the full request from the BGuest API here
             var messageString = JsonConvert.SerializeObject(model, Formatting.Indented);
             Debug.WriteLine(messageString);
             return Ok();

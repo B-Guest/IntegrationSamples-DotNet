@@ -2,7 +2,7 @@
 <html>
 <head>
     <title></title>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <script src="Scripts/jquery-1.10.2.min.js"></script>
     <script src="Scripts/jquery.signalR-2.2.0.min.js"></script>
     <script src="/signalr/hubs"></script>
@@ -15,24 +15,36 @@
 </head>
 <body>
     <div class="container" style="padding-top: 20px">
+        <h3>BGuest WebHook Debugger</h3>
+        <p>
+            Set this endpoint on your web hook configuration:
+            <pre id="endpoint"></pre>
+        </p>
+
         <div class="row">
+            <div class="col col-md-12">
+                <p>
+                    Call log:
+                </p>
+            </div>
             <div class="col col-md-12">
                 <textarea id="requestChanges" type="text" style="width: 100%; height: 600px"></textarea>
             </div>
         </div>
     </div>
-<script>
-    $(function() {
-        var hub = $.connection.refreshUiHub;
-        hub.client.webhookCalled = function (message) {
-            var text = $("#requestChanges").val();
-            text += "\n" + message;
-            $("#requestChanges").text(text);
-        };
-        $.connection.hub.start().done(function () {
-            $("#requestChanges").text("Started...");
-        });
-    })
-</script>
+    <script>
+        $(function () {
+            $("#endpoint").text(location.protocol + "//" + location.host + "/webhooks/changes");
+            var hub = $.connection.refreshUiHub;
+            hub.client.webhookCalled = function (message) {
+                var text = $("#requestChanges").val();
+                text += "\n" + message;
+                $("#requestChanges").text(text);
+            };
+            $.connection.hub.start().done(function () {
+                $("#requestChanges").text("Started...");
+            });
+        })
+    </script>
 </body>
 </html>
