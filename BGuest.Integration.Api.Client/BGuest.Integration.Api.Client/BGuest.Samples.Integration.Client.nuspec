@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>2.2.0</version>
+    <title>$title$</title>
+    <authors>BGuest</authors>
+    <owners>BGuest</owners>
+    <licenseUrl>https://github.com/B-Guest/IntegrationSamples-DotNet/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/B-Guest/IntegrationSamples-DotNet</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Support for .net framework 4.5</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <tags>BGuest Integration Api .Net Client</tags>
+  </metadata>
+</package>
