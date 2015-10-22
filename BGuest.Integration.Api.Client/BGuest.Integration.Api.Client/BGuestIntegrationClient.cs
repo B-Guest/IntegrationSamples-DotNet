@@ -59,7 +59,6 @@ namespace BGuest.Integration.Api.Client
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                // Get BGuest request data.
                 var requestApiUrl = string.Format("api/v2/requests?apiKey={0}&apiSecret={1}&fromId={2}&skip={3}&take={4}",
                     ApiKey, ApiSecret, fromId, skip, take);
 
@@ -78,7 +77,6 @@ namespace BGuest.Integration.Api.Client
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                // Get BGuest integrated requests data.
                 var requestApiUrl = string.Format("api/v2/requests/integrated?apiKey={0}&apiSecret={1}&fromId={2}&skip={3}&take={4}",
                     ApiKey, ApiSecret, fromId, skip, take);
 
@@ -97,7 +95,6 @@ namespace BGuest.Integration.Api.Client
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                // Get BGuest request data.
                 var requestApiUrl = string.Format("api/v2/requests/{0}?apiKey={1}&apiSecret={2}",
                     requestId, ApiKey, ApiSecret);
 
@@ -116,7 +113,6 @@ namespace BGuest.Integration.Api.Client
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                // Get BGuest request data.
                 var requestApiUrl = string.Format("api/v2/requests/{0}/integrated?apiKey={1}&apiSecret={2}",
                     requestId, ApiKey, ApiSecret);
 
@@ -135,7 +131,6 @@ namespace BGuest.Integration.Api.Client
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                // Set BGuest api uri.
                 var requestApiUrl = string.Format("api/v2/requests/{0}/state?apiKey={1}&apiSecret={2}",
                     requestId, ApiKey, ApiSecret);
 
@@ -154,7 +149,6 @@ namespace BGuest.Integration.Api.Client
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                // Set BGuest api uri.
                 var requestApiUrl = string.Format("api/v2/stays?apiKey={0}&apiSecret={1}", ApiKey, ApiSecret);
 
                 HttpResponseMessage responseBGuest = await client.PostAsJsonAsync<List<StayImportModel>>(requestApiUrl, stays);
@@ -171,7 +165,6 @@ namespace BGuest.Integration.Api.Client
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                // Get BGuest integrated requests data.
                 var requestApiUrl = string.Format("api/v2/stays/integrated?apiKey={0}&apiSecret={1}&fromId={2}&skip={3}&take={4}",
                     ApiKey, ApiSecret, fromId, skip, take);
 
