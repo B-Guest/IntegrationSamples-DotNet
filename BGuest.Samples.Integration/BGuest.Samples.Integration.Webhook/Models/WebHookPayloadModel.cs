@@ -11,6 +11,9 @@ namespace BGuest.Samples.Integration.Webhook.Models
         public RequestChangesModel Request { get; set; }
 
         [Required]
+        public CheckInRequestChangesModel CheckInRequest { get; set; }
+
+        [Required]
         public StayChangesModel Stay { get; set; }
     }
 }
