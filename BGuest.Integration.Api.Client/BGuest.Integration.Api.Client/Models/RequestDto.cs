@@ -410,4 +410,85 @@ namespace BGuest.Integration.Api.Client.Models
             }
         }
     }
+
+    /// <summary>
+    /// A checkin request
+    /// </summary>
+    public partial class CheckInRequestDto
+    {
+        /// <summary>
+        /// CheckIn Request Id
+        /// </summary>
+        public int Id { get; set; }
+        /// <summary>
+        /// Checkin date
+        /// </summary>
+        public DateTimeOffset CheckInDate { get; set; }
+        /// <summary>
+        /// Checkout date
+        /// </summary>
+        public DateTimeOffset CheckOutDate { get; set; }
+        /// <summary>
+        /// Expected arrival time to checkin.
+        /// </summary>
+        public DateTimeOffset? ExpectedArrivalTime { get; set; }
+        /// <summary>
+        /// Reservation number.
+        /// </summary>
+        public string Reservation { get; set; }
+        /// <summary>
+        /// Guest first name.
+        /// </summary>
+        public string FirstName { get; set; }
+        /// <summary>
+        /// Guest last name.
+        /// </summary>
+        public string LastName { get; set; }
+        /// <summary>
+        /// Guest email address.
+        /// </summary>
+        public string Email { get; set; }
+        /// <summary>
+        /// Guest phone number.
+        /// </summary>
+        public string Phone { get; set; }
+        /// <summary>
+        /// Guest identification card number.
+        /// </summary>
+        public string GuestIdentification { get; set; }
+        /// <summary>
+        /// Date of creation
+        /// </summary>
+        public DateTimeOffset RequestedOn { get; set; }
+        public int State { get; set; }
+        /// <summary>                 
+        /// Date when Request state was changed to "Confirmed"
+        /// </summary>                
+        public DateTimeOffset? ConfirmedOn { get; set; }
+        /// <summary>
+        /// Date when checkin Request state was changed to "Rejected"
+        /// </summary>
+        public DateTimeOffset? RejectedOn { get; set; }
+        /// <summary>
+        /// Date when Request state was changed to "Removed"
+        /// </summary>
+        public DateTimeOffset? CanceledOn { get; set; }
+        /// <summary>
+        /// Date when checkin Request was Integrated on PMS
+        /// </summary>
+        public DateTimeOffset? IntegratedOn { get; set; }
+        /// <summary>
+        /// flag that determines if the checkin Request is integrated on PMS
+        /// </summary>
+        public bool IsIntegratedOnPms { get; set; }
+        /// <summary>
+        /// The guest 
+        /// </summary>
+        public GuestDto Guest { get; set; }
+        /// <summary>
+        /// The request's external system key
+        /// </summary>
+        public string ExternalKey { get; set; }
+    }
+
 }

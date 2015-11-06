@@ -51,6 +51,7 @@ namespace BGuest.Integration.Api.Client
             ApiSecret = apiSecret;
         }
 
+        #region Request
         public async Task<List<RequestDto>> GetRequestsAsync(int? fromId, int? skip, int? take)
         {
             using (var client = new HttpClient())
@@ -141,6 +142,9 @@ namespace BGuest.Integration.Api.Client
                 return JsonConvert.DeserializeObject<object>(await responseBGuest.Content.ReadAsStringAsync());
             }
         }
+        #endregion
+
+        #region Stays
         public async Task<List<StayImportResultDto>> ImportStaysAsync(List<StayImportModel> stays)
         {
             using (var client = new HttpClient())
@@ -175,6 +179,100 @@ namespace BGuest.Integration.Api.Client
                 return JsonConvert.DeserializeObject<List<StayReservationDto>>(await responseBGuest.Content.ReadAsStringAsync());
             }
         }
+        #endregion
+
+        #region CheckInRequest
+        public async Task<List<CheckInRequestDto>> GetCheckInRequestsAsync(int? fromId, int? skip, int? take)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = BaseUri;
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var requestApiUrl = string.Format("api/v2/requests/checkinrequests?apiKey={0}&apiSecret={1}&fromId={2}&skip={3}&take={4}",
+                    ApiKey, ApiSecret, fromId, skip, take);
+
+                HttpResponseMessage responseBGuest = await client.GetAsync(requestApiUrl);
+
+                responseBGuest.EnsureSuccessStatusCode();
+
+                return JsonConvert.DeserializeObject<List<CheckInRequestDto>>(await responseBGuest.Content.ReadAsStringAsync());
+            }
+        }
+        public async Task<List<CheckInRequestDto>> GetIntegratedCheckInRequestsAsync(int? fromId, int? skip, int? take)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = BaseUri;
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var requestApiUrl = string.Format("api/v2/requests/checkinrequests/integrated?apiKey={0}&apiSecret={1}&fromId={2}&skip={3}&take={4}",
+                    ApiKey, ApiSecret, fromId, skip, take);
+
+                HttpResponseMessage responseBGuest = await client.GetAsync(requestApiUrl);
+
+                responseBGuest.EnsureSuccessStatusCode();
+
+                return JsonConvert.DeserializeObject<List<CheckInRequestDto>>(await responseBGuest.Content.ReadAsStringAsync());
+            }
+        }
+        public async Task<CheckInRequestDto> GetCheckInRequestByIdAsync(int requestId)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = BaseUri;
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var requestApiUrl = string.Format("api/v2/requests/checkinrequests/{0}?apiKey={1}&apiSecret={2}",
+                    requestId, ApiKey, ApiSecret);
+
+                HttpResponseMessage responseBGuest = await client.GetAsync(requestApiUrl);
+
+                responseBGuest.EnsureSuccessStatusCode();
+
+                return JsonConvert.DeserializeObject<CheckInRequestDto>(await responseBGuest.Content.ReadAsStringAsync());
+            }
+        }
+        public async Task<CheckInRequestDto> SetCheckInRequestAsIntegratedByIdAsync(int requestId, SetCheckInRequestAsIntegratedModel model)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = BaseUri;
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var requestApiUrl = string.Format("api/v2/requests/checkinrequests/{0}/integrated?apiKey={1}&apiSecret={2}",
+                    requestId, ApiKey, ApiSecret);
+
+                HttpResponseMessage responseBGuest = await client.PutAsJsonAsync<SetCheckInRequestAsIntegratedModel>(requestApiUrl, model);
+
+                responseBGuest.EnsureSuccessStatusCode();
+
+                return JsonConvert.DeserializeObject<CheckInRequestDto>(await responseBGuest.Content.ReadAsStringAsync());
+            }
+        }
+        public async Task<object> SetCheckInRequestStatusByIdAsync(int requestId, CheckInRequestStateModelIntegration model)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = BaseUri;
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var requestApiUrl = string.Format("api/v2/requests/checkinrequests/{0}/state?apiKey={1}&apiSecret={2}",
+                    requestId, ApiKey, ApiSecret);
+
+                HttpResponseMessage responseBGuest = await client.PutAsJsonAsync<CheckInRequestStateModelIntegration>(requestApiUrl, model);
+
+                responseBGuest.EnsureSuccessStatusCode();
+
+                return JsonConvert.DeserializeObject<object>(await responseBGuest.Content.ReadAsStringAsync());
+            }
+        }
+        #endregion
 
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls

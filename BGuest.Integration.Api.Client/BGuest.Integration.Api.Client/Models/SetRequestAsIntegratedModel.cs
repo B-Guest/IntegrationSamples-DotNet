@@ -61,4 +61,59 @@ namespace BGuest.Integration.Api.Client.Models
             return outputObject;
         }
     }
+
+    public partial class SetCheckInRequestAsIntegratedModel
+    {
+        private string _externalKey;
+
+        /// <summary>
+        /// Optional. External system key for this checkin request
+        /// </summary>
+        public string ExternalKey
+        {
+            get { return this._externalKey; }
+            set { this._externalKey = value; }
+        }
+
+        private bool? _isIntegratedOnPms;
+
+        /// <summary>
+        /// Optional. Indicates that the checkin request is integrated on the PMS system
+        /// </summary>
+        public bool? IsIntegratedOnPms
+        {
+            get { return this._isIntegratedOnPms; }
+            set { this._isIntegratedOnPms = value; }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the SetCheckInRequestAsIntegratedModel class.
+        /// </summary>
+        public SetCheckInRequestAsIntegratedModel()
+        {
+        }
+
+        /// <summary>
+        /// Serialize the object
+        /// </summary>
+        /// <returns>
+        /// Returns the json model for the type SetCheckInRequestAsIntegratedModel
+        /// </returns>
+        public virtual JToken SerializeJson(JToken outputObject)
+        {
+            if (outputObject == null)
+            {
+                outputObject = new JObject();
+            }
+            if (this.ExternalKey != null)
+            {
+                outputObject["externalKey"] = this.ExternalKey;
+            }
+            if (this.IsIntegratedOnPms != null)
+            {
+                outputObject["isIntegratedOnPms"] = this.IsIntegratedOnPms.Value;
+            }
+            return outputObject;
+        }
+    }
 }
