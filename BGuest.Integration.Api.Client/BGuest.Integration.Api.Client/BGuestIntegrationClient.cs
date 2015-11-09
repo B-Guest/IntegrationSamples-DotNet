@@ -11,36 +11,21 @@ namespace BGuest.Integration.Api.Client
     public class BGuestIntegrationClient : IDisposable
     {
         #region Properties
-        private Uri _baseUri;
-        private Guid _apiKey;
-        private string _apiSecret;
 
         /// <summary>
         /// The base URI of the service.
         /// </summary>
-        public Uri BaseUri
-        {
-            get { return this._baseUri; }
-            set { this._baseUri = value; }
-        }
+        public Uri BaseUri { get; set; }
 
         /// <summary>
         /// Api key to be used for all service requests. 
         /// </summary>
-        public Guid ApiKey
-        {
-            get { return this._apiKey; }
-            set { this._apiKey = value; }
-        }
+        public Guid ApiKey { get; set; }
 
         /// <summary>
         /// Api secreet to be used for all service requests. 
         /// </summary>
-        public string ApiSecret
-        {
-            get { return this._apiSecret; }
-            set { this._apiSecret = value; }
-        }
+        public string ApiSecret { get; set; }
 
         #endregion
 
@@ -60,10 +45,10 @@ namespace BGuest.Integration.Api.Client
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var requestApiUrl = string.Format("api/v2/requests?apiKey={0}&apiSecret={1}&fromId={2}&skip={3}&take={4}",
-                    ApiKey, ApiSecret, fromId, skip, take);
+                var requestApiUrl =
+                    $"api/v2/requests?apiKey={ApiKey}&apiSecret={ApiSecret}&fromId={fromId}&skip={skip}&take={take}";
 
-                HttpResponseMessage responseBGuest = await client.GetAsync(requestApiUrl);
+                var responseBGuest = await client.GetAsync(requestApiUrl);
 
                 responseBGuest.EnsureSuccessStatusCode();
 
@@ -78,10 +63,10 @@ namespace BGuest.Integration.Api.Client
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var requestApiUrl = string.Format("api/v2/requests/integrated?apiKey={0}&apiSecret={1}&fromId={2}&skip={3}&take={4}",
-                    ApiKey, ApiSecret, fromId, skip, take);
+                var requestApiUrl =
+                    $"api/v2/requests/integrated?apiKey={ApiKey}&apiSecret={ApiSecret}&fromId={fromId}&skip={skip}&take={take}";
 
-                HttpResponseMessage responseBGuest = await client.GetAsync(requestApiUrl);
+                var responseBGuest = await client.GetAsync(requestApiUrl);
 
                 responseBGuest.EnsureSuccessStatusCode();
 
@@ -96,10 +81,9 @@ namespace BGuest.Integration.Api.Client
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var requestApiUrl = string.Format("api/v2/requests/{0}?apiKey={1}&apiSecret={2}",
-                    requestId, ApiKey, ApiSecret);
+                var requestApiUrl = $"api/v2/requests/{requestId}?apiKey={ApiKey}&apiSecret={ApiSecret}";
 
-                HttpResponseMessage responseBGuest = await client.GetAsync(requestApiUrl);
+                var responseBGuest = await client.GetAsync(requestApiUrl);
 
                 responseBGuest.EnsureSuccessStatusCode();
 
@@ -114,10 +98,9 @@ namespace BGuest.Integration.Api.Client
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var requestApiUrl = string.Format("api/v2/requests/{0}/integrated?apiKey={1}&apiSecret={2}",
-                    requestId, ApiKey, ApiSecret);
+                var requestApiUrl = $"api/v2/requests/{requestId}/integrated?apiKey={ApiKey}&apiSecret={ApiSecret}";
 
-                HttpResponseMessage responseBGuest = await client.PutAsJsonAsync<SetRequestAsIntegratedModel>(requestApiUrl, model);
+                HttpResponseMessage responseBGuest = await client.PutAsJsonAsync(requestApiUrl, model);
 
                 responseBGuest.EnsureSuccessStatusCode();
 
@@ -132,10 +115,9 @@ namespace BGuest.Integration.Api.Client
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var requestApiUrl = string.Format("api/v2/requests/{0}/state?apiKey={1}&apiSecret={2}",
-                    requestId, ApiKey, ApiSecret);
+                var requestApiUrl = $"api/v2/requests/{requestId}/state?apiKey={ApiKey}&apiSecret={ApiSecret}";
 
-                HttpResponseMessage responseBGuest = await client.PutAsJsonAsync<RequestStateModelIntegration>(requestApiUrl, model);
+                HttpResponseMessage responseBGuest = await client.PutAsJsonAsync(requestApiUrl, model);
 
                 responseBGuest.EnsureSuccessStatusCode();
 
@@ -153,9 +135,9 @@ namespace BGuest.Integration.Api.Client
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var requestApiUrl = string.Format("api/v2/stays?apiKey={0}&apiSecret={1}", ApiKey, ApiSecret);
+                var requestApiUrl = $"api/v2/stays?apiKey={ApiKey}&apiSecret={ApiSecret}";
 
-                HttpResponseMessage responseBGuest = await client.PostAsJsonAsync<List<StayImportModel>>(requestApiUrl, stays);
+                var responseBGuest = await client.PostAsJsonAsync(requestApiUrl, stays);
                 responseBGuest.EnsureSuccessStatusCode();
 
                 return JsonConvert.DeserializeObject<List<StayImportResultDto>>(await responseBGuest.Content.ReadAsStringAsync());
@@ -169,10 +151,10 @@ namespace BGuest.Integration.Api.Client
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var requestApiUrl = string.Format("api/v2/stays/integrated?apiKey={0}&apiSecret={1}&fromId={2}&skip={3}&take={4}",
-                    ApiKey, ApiSecret, fromId, skip, take);
+                var requestApiUrl =
+                    $"api/v2/stays/integrated?apiKey={ApiKey}&apiSecret={ApiSecret}&fromId={fromId}&skip={skip}&take={take}";
 
-                HttpResponseMessage responseBGuest = await client.GetAsync(requestApiUrl);
+                var responseBGuest = await client.GetAsync(requestApiUrl);
 
                 responseBGuest.EnsureSuccessStatusCode();
 

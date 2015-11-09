@@ -21,18 +21,38 @@ Your endpoint should be prepared to receive a JSON payload with the following fo
       "subServiceTypeName": string,
       "pointOfInterestName": string,
       "operation": string, 
-      "changedBy": string 
+      "changedBy": string,
+      "isIntegratedOnPms": bool,
+      "room": string,
+      "externalKey": string,
+      "additionalInfo": string
+      "expectedForLocalTime": date
+      "products": [
+        {
+          "externalKey": string
+        }
+      ]
     }
   }
 ```
 
-<b>documentType:</b> type of notification. So far, the only possible value is "Request"<br/>
-<b>request.requestId:</b> id of the request<br/>
-<b>request.subServiceName:</b> SubServive of the request<br/>
-<b>request.subServiceTypeName:</b> SubService type of the request<br/>
-<b>request.pointOfInterestName:</b> Point of Interest of the request<br/>
-<b>request.operation:</b> operation made. Ultimately, it reflects the state the request is on. Possible values are "Created", "Started", "Ready", "Completed" and "Canceled"<br/>
-<b>request.changedBy:</b> who was responsible for these changes. Possible values are "Guest", "HotelBackOffice" and "IntegrationApi"<br/>
+| Object        | Field           | Definition  |
+| ------------- |:-------------:| -----:|
+| root      | documentType |  Type of notification. So far, the only possible value is "Request"|
+| request      | requestId      |   Id of the request |
+| request | subServiceName      |    SubServive of the request |
+| request | subServiceTypeName      |     SubService type of the request |
+| request | pointOfInterestName      |    Point of Interest of the request |
+| request | operation      |    Operation made. Ultimately, it reflects the state the request is on. Possible values are "Created", "Started", "Ready", "Completed" and "Canceled" |
+| request | changedBy      |    Who was responsible for these changes. Possible values are "Guest", "HotelBackOffice" and "IntegrationApi" |
+| request | isIntegratedOnPms      |    Indicates if this request is already integrated in the PMS |
+| request | room      |    Hotel room number |
+| request | externalKey      |    PMS identification key for this request if already integrated |
+| request | additionalInfo      |    Any aditional information the guest has provided |
+| request | expectedForLocalTime      |    Date and time the guest expects the request to be delivered |
+| request | products      |    List of products the guest added to the request |
+| request.product | externalKey      |    PMS identification key for each request's product |
+
 
 NOTE:
 A Request can only be associated to either a SubService or a Point of Interest, which means that if SubServiceName and SubServiceTypeName are not null, PointOfInterestName will always be null, and vice-versa.
