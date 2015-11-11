@@ -1,6 +1,4 @@
-﻿using BGuest.Integration.Api.Client;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -171,8 +169,8 @@ namespace BGuest.Integration.Api.Client
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var requestApiUrl = string.Format("api/v2/requests/checkinrequests?apiKey={0}&apiSecret={1}&fromId={2}&skip={3}&take={4}",
-                    ApiKey, ApiSecret, fromId, skip, take);
+                var requestApiUrl =
+                    $"api/v2/requests/checkinrequests?apiKey={ApiKey}&apiSecret={ApiSecret}&fromId={fromId}&skip={skip}&take={take}";
 
                 HttpResponseMessage responseBGuest = await client.GetAsync(requestApiUrl);
 
@@ -189,8 +187,8 @@ namespace BGuest.Integration.Api.Client
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var requestApiUrl = string.Format("api/v2/requests/checkinrequests/integrated?apiKey={0}&apiSecret={1}&fromId={2}&skip={3}&take={4}",
-                    ApiKey, ApiSecret, fromId, skip, take);
+                var requestApiUrl =
+                    $"api/v2/requests/checkinrequests/integrated?apiKey={ApiKey}&apiSecret={ApiSecret}&fromId={fromId}&skip={skip}&take={take}";
 
                 HttpResponseMessage responseBGuest = await client.GetAsync(requestApiUrl);
 
@@ -207,8 +205,7 @@ namespace BGuest.Integration.Api.Client
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var requestApiUrl = string.Format("api/v2/requests/checkinrequests/{0}?apiKey={1}&apiSecret={2}",
-                    requestId, ApiKey, ApiSecret);
+                var requestApiUrl = $"api/v2/requests/checkinrequests/{requestId}?apiKey={ApiKey}&apiSecret={ApiSecret}";
 
                 HttpResponseMessage responseBGuest = await client.GetAsync(requestApiUrl);
 
@@ -225,8 +222,8 @@ namespace BGuest.Integration.Api.Client
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var requestApiUrl = string.Format("api/v2/requests/checkinrequests/{0}/integrated?apiKey={1}&apiSecret={2}",
-                    requestId, ApiKey, ApiSecret);
+                var requestApiUrl =
+                    $"api/v2/requests/checkinrequests/{requestId}/integrated?apiKey={ApiKey}&apiSecret={ApiSecret}";
 
                 HttpResponseMessage responseBGuest = await client.PutAsJsonAsync<SetCheckInRequestAsIntegratedModel>(requestApiUrl, model);
 
@@ -243,8 +240,8 @@ namespace BGuest.Integration.Api.Client
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var requestApiUrl = string.Format("api/v2/requests/checkinrequests/{0}/state?apiKey={1}&apiSecret={2}",
-                    requestId, ApiKey, ApiSecret);
+                var requestApiUrl =
+                    $"api/v2/requests/checkinrequests/{requestId}/state?apiKey={ApiKey}&apiSecret={ApiSecret}";
 
                 HttpResponseMessage responseBGuest = await client.PutAsJsonAsync<CheckInRequestStateModelIntegration>(requestApiUrl, model);
 
