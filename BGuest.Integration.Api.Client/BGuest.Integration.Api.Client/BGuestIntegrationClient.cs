@@ -98,7 +98,7 @@ namespace BGuest.Integration.Api.Client
 
                 var requestApiUrl = $"api/v2/requests/{requestId}/integrated?apiKey={ApiKey}&apiSecret={ApiSecret}";
 
-                HttpResponseMessage responseBGuest = await client.PutAsJsonAsync(requestApiUrl, model);
+                var responseBGuest = await client.PutAsJsonAsync(requestApiUrl, model);
 
                 responseBGuest.EnsureSuccessStatusCode();
 
@@ -115,7 +115,7 @@ namespace BGuest.Integration.Api.Client
 
                 var requestApiUrl = $"api/v2/requests/{requestId}/state?apiKey={ApiKey}&apiSecret={ApiSecret}";
 
-                HttpResponseMessage responseBGuest = await client.PutAsJsonAsync(requestApiUrl, model);
+                var responseBGuest = await client.PutAsJsonAsync(requestApiUrl, model);
 
                 responseBGuest.EnsureSuccessStatusCode();
 
@@ -172,7 +172,7 @@ namespace BGuest.Integration.Api.Client
                 var requestApiUrl =
                     $"api/v2/requests/checkinrequests?apiKey={ApiKey}&apiSecret={ApiSecret}&fromId={fromId}&skip={skip}&take={take}";
 
-                HttpResponseMessage responseBGuest = await client.GetAsync(requestApiUrl);
+                var responseBGuest = await client.GetAsync(requestApiUrl);
 
                 responseBGuest.EnsureSuccessStatusCode();
 
@@ -190,7 +190,7 @@ namespace BGuest.Integration.Api.Client
                 var requestApiUrl =
                     $"api/v2/requests/checkinrequests/integrated?apiKey={ApiKey}&apiSecret={ApiSecret}&fromId={fromId}&skip={skip}&take={take}";
 
-                HttpResponseMessage responseBGuest = await client.GetAsync(requestApiUrl);
+                var responseBGuest = await client.GetAsync(requestApiUrl);
 
                 responseBGuest.EnsureSuccessStatusCode();
 
@@ -207,7 +207,7 @@ namespace BGuest.Integration.Api.Client
 
                 var requestApiUrl = $"api/v2/requests/checkinrequests/{requestId}?apiKey={ApiKey}&apiSecret={ApiSecret}";
 
-                HttpResponseMessage responseBGuest = await client.GetAsync(requestApiUrl);
+                var responseBGuest = await client.GetAsync(requestApiUrl);
 
                 responseBGuest.EnsureSuccessStatusCode();
 
@@ -225,7 +225,7 @@ namespace BGuest.Integration.Api.Client
                 var requestApiUrl =
                     $"api/v2/requests/checkinrequests/{requestId}/integrated?apiKey={ApiKey}&apiSecret={ApiSecret}";
 
-                HttpResponseMessage responseBGuest = await client.PutAsJsonAsync<SetCheckInRequestAsIntegratedModel>(requestApiUrl, model);
+                var responseBGuest = await client.PutAsJsonAsync(requestApiUrl, model);
 
                 responseBGuest.EnsureSuccessStatusCode();
 
@@ -243,7 +243,7 @@ namespace BGuest.Integration.Api.Client
                 var requestApiUrl =
                     $"api/v2/requests/checkinrequests/{requestId}/state?apiKey={ApiKey}&apiSecret={ApiSecret}";
 
-                HttpResponseMessage responseBGuest = await client.PutAsJsonAsync<CheckInRequestStateModelIntegration>(requestApiUrl, model);
+                var responseBGuest = await client.PutAsJsonAsync(requestApiUrl, model);
 
                 responseBGuest.EnsureSuccessStatusCode();
 

@@ -2,8 +2,6 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 using System;
-using System.Linq;
-using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -110,12 +108,12 @@ namespace BGuest.Integration.Api.Client
         /// </summary>
         public StayStates State { get; set; }
 
-        /// <summary>
-        /// Initializes a new instance of the StayImportModel class.
-        /// </summary>
-        public StayImportModel()
-        {
-        }
+        ///// <summary>
+        ///// Initializes a new instance of the StayImportModel class.
+        ///// </summary>
+        //public StayImportModel()
+        //{
+        //}
         
         ///// <summary>
         ///// Serialize the object

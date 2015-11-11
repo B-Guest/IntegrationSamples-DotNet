@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-
-namespace BGuest.Integration.Api.Client
+﻿namespace BGuest.Integration.Api.Client
 {
     public class SetRequestAsIntegratedModel
     {
@@ -14,12 +12,12 @@ namespace BGuest.Integration.Api.Client
         /// </summary>
         public bool IsIntegratedOnPms { get; set; }
 
-        /// <summary>
-        /// Initializes a new instance of the SetRequestAsIntegratedModel class.
-        /// </summary>
-        public SetRequestAsIntegratedModel()
-        {
-        }
+        ///// <summary>
+        ///// Initializes a new instance of the SetRequestAsIntegratedModel class.
+        ///// </summary>
+        //public SetRequestAsIntegratedModel()
+        //{
+        //}
         
         ///// <summary>
         ///// Serialize the object

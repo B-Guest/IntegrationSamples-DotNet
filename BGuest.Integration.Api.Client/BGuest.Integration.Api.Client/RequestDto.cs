@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Newtonsoft.Json.Linq;
 
 namespace BGuest.Integration.Api.Client
 {
@@ -126,13 +125,13 @@ namespace BGuest.Integration.Api.Client
         /// </summary>
         public SubServiceDto SubService { get; set; }
 
-        /// <summary>
-        /// Initializes a new instance of the RequestDto class.
-        /// </summary>
-        public RequestDto()
-        {
-            this.Categories = new List<RequestCategoryDto>();
-        }
+        ///// <summary>
+        ///// Initializes a new instance of the RequestDto class.
+        ///// </summary>
+        //public RequestDto()
+        //{
+        //    this.Categories = new List<RequestCategoryDto>();
+        //}
         
         ///// <summary>
         ///// Deserialize the object

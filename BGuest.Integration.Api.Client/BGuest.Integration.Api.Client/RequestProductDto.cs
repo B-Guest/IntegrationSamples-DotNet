@@ -2,7 +2,6 @@
 // Changes may cause incorrect behavior and will be lost if the code is regenerated.
 
 using System.Collections.Generic;
-using Newtonsoft.Json.Linq;
 
 namespace BGuest.Integration.Api.Client
 {
@@ -53,13 +52,13 @@ namespace BGuest.Integration.Api.Client
         /// </summary>
         public int Quantity { get; set; }
 
-        /// <summary>
-        /// Initializes a new instance of the RequestProductDto class.
-        /// </summary>
-        public RequestProductDto()
-        {
-            this.ProductOptions = new List<RequestProductOptionDto>();
-        }
+        ///// <summary>
+        ///// Initializes a new instance of the RequestProductDto class.
+        ///// </summary>
+        //public RequestProductDto()
+        //{
+        //    this.ProductOptions = new List<RequestProductOptionDto>();
+        //}
         
         ///// <summary>
         ///// Deserialize the object

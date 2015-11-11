@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-
-namespace BGuest.Integration.Api.Client
+﻿namespace BGuest.Integration.Api.Client
 {
     public class RequestProductOptionDto
     {
@@ -35,13 +33,6 @@ namespace BGuest.Integration.Api.Client
         /// </summary>
         public int ProductOptionId { get; set; }
 
-        /// <summary>
-        /// Initializes a new instance of the RequestProductOptionDto class.
-        /// </summary>
-        public RequestProductOptionDto()
-        {
-        }
-        
         ///// <summary>
         ///// Deserialize the object
         ///// </summary>

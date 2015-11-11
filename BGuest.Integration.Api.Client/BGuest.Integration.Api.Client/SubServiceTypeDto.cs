@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-
-namespace BGuest.Integration.Api.Client
+﻿namespace BGuest.Integration.Api.Client
 {
     public class SubServiceTypeDto
     {
@@ -14,12 +12,12 @@ namespace BGuest.Integration.Api.Client
         /// </summary>
         public string Name { get; set; }
 
-        /// <summary>
-        /// Initializes a new instance of the SubServiceTypeDto class.
-        /// </summary>
-        public SubServiceTypeDto()
-        {
-        }
+        ///// <summary>
+        ///// Initializes a new instance of the SubServiceTypeDto class.
+        ///// </summary>
+        //public SubServiceTypeDto()
+        //{
+        //}
         
         ///// <summary>
         ///// Deserialize the object
