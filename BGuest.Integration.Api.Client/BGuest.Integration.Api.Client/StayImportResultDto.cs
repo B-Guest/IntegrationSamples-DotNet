@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BGuest.Integration.Api.Client
+﻿namespace BGuest.Integration.Api.Client
 {
     public class StayImportResultDto
     {

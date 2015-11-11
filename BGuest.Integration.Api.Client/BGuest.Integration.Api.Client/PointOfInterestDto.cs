@@ -1,6 +1,4 @@
 ﻿
-using Newtonsoft.Json.Linq;
-
 namespace BGuest.Integration.Api.Client
 {
     public class PointOfInterestDto
@@ -15,12 +13,12 @@ namespace BGuest.Integration.Api.Client
         /// </summary>
         public string Name { get; set; }
 
-        /// <summary>
-        /// Initializes a new instance of the PointOfInterestDto class.
-        /// </summary>
-        public PointOfInterestDto()
-        {
-        }
+        ///// <summary>
+        ///// Initializes a new instance of the PointOfInterestDto class.
+        ///// </summary>
+        //public PointOfInterestDto()
+        //{
+        //}
         
         ///// <summary>
         ///// Deserialize the object
