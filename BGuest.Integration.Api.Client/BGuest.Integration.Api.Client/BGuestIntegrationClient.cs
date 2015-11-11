@@ -1,4 +1,4 @@
-﻿using BGuest.Integration.Api.Client.Models;
+﻿using BGuest.Integration.Api.Client;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -52,7 +52,7 @@ namespace BGuest.Integration.Api.Client
 
                 responseBGuest.EnsureSuccessStatusCode();
 
-                return JsonConvert.DeserializeObject<List<RequestDto>>(await responseBGuest.Content.ReadAsStringAsync());
+                return await responseBGuest.Content.ReadAsAsync<List<RequestDto>>();
             }
         }
         public async Task<List<RequestDto>> GetIntegratedRequestsAsync(int? fromId, int? skip, int? take)
@@ -70,7 +70,7 @@ namespace BGuest.Integration.Api.Client
 
                 responseBGuest.EnsureSuccessStatusCode();
 
-                return JsonConvert.DeserializeObject<List<RequestDto>>(await responseBGuest.Content.ReadAsStringAsync());
+                return await responseBGuest.Content.ReadAsAsync<List<RequestDto>>();
             }
         }
         public async Task<RequestDto> GetRequestByIdAsync(int requestId)
@@ -87,7 +87,7 @@ namespace BGuest.Integration.Api.Client
 
                 responseBGuest.EnsureSuccessStatusCode();
 
-                return JsonConvert.DeserializeObject<RequestDto>(await responseBGuest.Content.ReadAsStringAsync());
+                return await responseBGuest.Content.ReadAsAsync<RequestDto>();
             }
         }
         public async Task<RequestDto> SetRequestAsIntegratedByIdAsync(int requestId, SetRequestAsIntegratedModel model)
@@ -104,7 +104,7 @@ namespace BGuest.Integration.Api.Client
 
                 responseBGuest.EnsureSuccessStatusCode();
 
-                return JsonConvert.DeserializeObject<RequestDto>(await responseBGuest.Content.ReadAsStringAsync());
+                return await responseBGuest.Content.ReadAsAsync<RequestDto>();
             }
         }
         public async Task<object> SetRequestStatusByIdAsync(int requestId, RequestStateModelIntegration model)
@@ -121,7 +121,7 @@ namespace BGuest.Integration.Api.Client
 
                 responseBGuest.EnsureSuccessStatusCode();
 
-                return JsonConvert.DeserializeObject<object>(await responseBGuest.Content.ReadAsStringAsync());
+                return await responseBGuest.Content.ReadAsAsync<object>();
             }
         }
         #endregion
@@ -139,8 +139,7 @@ namespace BGuest.Integration.Api.Client
 
                 var responseBGuest = await client.PostAsJsonAsync(requestApiUrl, stays);
                 responseBGuest.EnsureSuccessStatusCode();
-
-                return JsonConvert.DeserializeObject<List<StayImportResultDto>>(await responseBGuest.Content.ReadAsStringAsync());
+                return await responseBGuest.Content.ReadAsAsync<List<StayImportResultDto>>();
             }
         }
         public async Task<List<StayReservationDto>> GetImportedStaysAsync(int? fromId, int? skip, int? take)
@@ -158,7 +157,7 @@ namespace BGuest.Integration.Api.Client
 
                 responseBGuest.EnsureSuccessStatusCode();
 
-                return JsonConvert.DeserializeObject<List<StayReservationDto>>(await responseBGuest.Content.ReadAsStringAsync());
+                return await responseBGuest.Content.ReadAsAsync<List<StayReservationDto>>();
             }
         }
         #endregion
@@ -179,7 +178,7 @@ namespace BGuest.Integration.Api.Client
 
                 responseBGuest.EnsureSuccessStatusCode();
 
-                return JsonConvert.DeserializeObject<List<CheckInRequestDto>>(await responseBGuest.Content.ReadAsStringAsync());
+                return await responseBGuest.Content.ReadAsAsync<List<CheckInRequestDto>>();
             }
         }
         public async Task<List<CheckInRequestDto>> GetIntegratedCheckInRequestsAsync(int? fromId, int? skip, int? take)
@@ -197,7 +196,7 @@ namespace BGuest.Integration.Api.Client
 
                 responseBGuest.EnsureSuccessStatusCode();
 
-                return JsonConvert.DeserializeObject<List<CheckInRequestDto>>(await responseBGuest.Content.ReadAsStringAsync());
+                return await responseBGuest.Content.ReadAsAsync<List<CheckInRequestDto>>();
             }
         }
         public async Task<CheckInRequestDto> GetCheckInRequestByIdAsync(int requestId)
@@ -215,7 +214,7 @@ namespace BGuest.Integration.Api.Client
 
                 responseBGuest.EnsureSuccessStatusCode();
 
-                return JsonConvert.DeserializeObject<CheckInRequestDto>(await responseBGuest.Content.ReadAsStringAsync());
+                return await responseBGuest.Content.ReadAsAsync<CheckInRequestDto>();
             }
         }
         public async Task<CheckInRequestDto> SetCheckInRequestAsIntegratedByIdAsync(int requestId, SetCheckInRequestAsIntegratedModel model)
@@ -233,7 +232,7 @@ namespace BGuest.Integration.Api.Client
 
                 responseBGuest.EnsureSuccessStatusCode();
 
-                return JsonConvert.DeserializeObject<CheckInRequestDto>(await responseBGuest.Content.ReadAsStringAsync());
+                return await responseBGuest.Content.ReadAsAsync<CheckInRequestDto>();
             }
         }
         public async Task<object> SetCheckInRequestStatusByIdAsync(int requestId, CheckInRequestStateModelIntegration model)
@@ -251,17 +250,17 @@ namespace BGuest.Integration.Api.Client
 
                 responseBGuest.EnsureSuccessStatusCode();
 
-                return JsonConvert.DeserializeObject<object>(await responseBGuest.Content.ReadAsStringAsync());
+                return await responseBGuest.Content.ReadAsAsync<object>();
             }
         }
         #endregion
 
         #region IDisposable Support
-        private bool disposedValue = false; // To detect redundant calls
+        private bool _disposedValue = false; // To detect redundant calls
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposedValue)
+            if (!_disposedValue)
             {
                 if (disposing)
                 {
@@ -271,7 +270,7 @@ namespace BGuest.Integration.Api.Client
                 // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
                 // TODO: set large fields to null.
 
-                disposedValue = true;
+                _disposedValue = true;
             }
         }
 

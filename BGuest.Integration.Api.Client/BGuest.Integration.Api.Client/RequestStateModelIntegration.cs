@@ -5,23 +5,17 @@ using System;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 
-namespace BGuest.Integration.Api.Client.Models
+namespace BGuest.Integration.Api.Client
 {
-    public partial class RequestStateModelIntegration
+    public class RequestStateModelIntegration
     {
-        private int _newState;
-        
         /// <summary>
         /// Required. Value of state that the Request will change to.
         /// Possible values are: Started: 1; Ready: 2; Completed:
         /// 3; Canceled: -2
         /// </summary>
-        public int NewState
-        {
-            get { return this._newState; }
-            set { this._newState = value; }
-        }
-        
+        public int NewState { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the RequestStateModelIntegration
         /// class.
@@ -40,37 +34,31 @@ namespace BGuest.Integration.Api.Client.Models
             this.NewState = newState;
         }
         
-        /// <summary>
-        /// Serialize the object
-        /// </summary>
-        /// <returns>
-        /// Returns the json model for the type RequestStateModelIntegration
-        /// </returns>
-        public virtual JToken SerializeJson(JToken outputObject)
-        {
-            if (outputObject == null)
-            {
-                outputObject = new JObject();
-            }
-            outputObject["newState"] = this.NewState;
-            return outputObject;
-        }
+        ///// <summary>
+        ///// Serialize the object
+        ///// </summary>
+        ///// <returns>
+        ///// Returns the json model for the type RequestStateModelIntegration
+        ///// </returns>
+        //public virtual JToken SerializeJson(JToken outputObject)
+        //{
+        //    if (outputObject == null)
+        //    {
+        //        outputObject = new JObject();
+        //    }
+        //    outputObject["newState"] = this.NewState;
+        //    return outputObject;
+        //}
     }
 
-    public partial class CheckInRequestStateModelIntegration
+    public class CheckInRequestStateModelIntegration
     {
-        private int _newState;
-
         /// <summary>
         /// Required. Value of state that the Request will change to.
         /// Possible values are: New: 0; Confirmed: 1; Rejected:
         /// -1; Removed: -2
         /// </summary>
-        public int NewState
-        {
-            get { return this._newState; }
-            set { this._newState = value; }
-        }
+        public int NewState { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the RequestStateModelIntegration
@@ -90,20 +78,20 @@ namespace BGuest.Integration.Api.Client.Models
             this.NewState = newState;
         }
 
-        /// <summary>
-        /// Serialize the object
-        /// </summary>
-        /// <returns>
-        /// Returns the json model for the type RequestStateModelIntegration
-        /// </returns>
-        public virtual JToken SerializeJson(JToken outputObject)
-        {
-            if (outputObject == null)
-            {
-                outputObject = new JObject();
-            }
-            outputObject["newState"] = this.NewState;
-            return outputObject;
-        }
+        ///// <summary>
+        ///// Serialize the object
+        ///// </summary>
+        ///// <returns>
+        ///// Returns the json model for the type RequestStateModelIntegration
+        ///// </returns>
+        //public virtual JToken SerializeJson(JToken outputObject)
+        //{
+        //    if (outputObject == null)
+        //    {
+        //        outputObject = new JObject();
+        //    }
+        //    outputObject["newState"] = this.NewState;
+        //    return outputObject;
+        //}
     }
 }

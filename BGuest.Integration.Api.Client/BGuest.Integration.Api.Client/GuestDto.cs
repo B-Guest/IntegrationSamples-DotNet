@@ -5,65 +5,35 @@ using System;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 
-namespace BGuest.Integration.Api.Client.Models
+namespace BGuest.Integration.Api.Client
 {
-    public partial class GuestDto
+    public class GuestDto
     {
-        private string _email;
-        
         /// <summary>
         /// Optional. Guest email
         /// </summary>
-        public string Email
-        {
-            get { return this._email; }
-            set { this._email = value; }
-        }
-        
-        private string _firstName;
-        
+        public string Email { get; set; }
+
         /// <summary>
         /// Optional. First name
         /// </summary>
-        public string FirstName
-        {
-            get { return this._firstName; }
-            set { this._firstName = value; }
-        }
-        
-        private int? _id;
-        
+        public string FirstName { get; set; }
+
         /// <summary>
         /// Optional. Guest id
         /// </summary>
-        public int? ID
-        {
-            get { return this._id; }
-            set { this._id = value; }
-        }
-        
-        private string _lastName;
-        
+        public int? Id { get; set; }
+
         /// <summary>
         /// Optional. Last name
         /// </summary>
-        public string LastName
-        {
-            get { return this._lastName; }
-            set { this._lastName = value; }
-        }
-        
-        private string _userName;
-        
+        public string LastName { get; set; }
+
         /// <summary>
         /// Optional. Username if the guest is a bguest user
         /// </summary>
-        public string UserName
-        {
-            get { return this._userName; }
-            set { this._userName = value; }
-        }
-        
+        public string UserName { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the GuestDto class.
         /// </summary>
@@ -91,7 +61,7 @@ namespace BGuest.Integration.Api.Client.Models
                 JToken idValue = inputObject["id"];
                 if (idValue != null && idValue.Type != JTokenType.Null)
                 {
-                    this.ID = ((int)idValue);
+                    this.Id = ((int)idValue);
                 }
                 JToken lastNameValue = inputObject["lastName"];
                 if (lastNameValue != null && lastNameValue.Type != JTokenType.Null)

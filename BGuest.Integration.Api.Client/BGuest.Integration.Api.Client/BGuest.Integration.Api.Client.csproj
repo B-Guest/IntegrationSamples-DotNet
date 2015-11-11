@@ -53,24 +53,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BGuestIntegrationClient.cs" />
-    <Compile Include="Models\GuestDto.cs" />
-    <Compile Include="Models\PointOfInterestDto.cs" />
-    <Compile Include="Models\RequestCategoryDto.cs" />
-    <Compile Include="Models\RequestDto.cs" />
-    <Compile Include="Models\RequestDtoCollection.cs" />
-    <Compile Include="Models\RequestModel.cs" />
-    <Compile Include="Models\RequestProductDto.cs" />
-    <Compile Include="Models\RequestProductOptionDto.cs" />
-    <Compile Include="Models\RequestStateModelIntegration.cs" />
-    <Compile Include="Models\SetRequestAsIntegratedModel.cs" />
-    <Compile Include="Models\StayImportModel.cs" />
-    <Compile Include="Models\StayImportModelCollection.cs" />
-    <Compile Include="Models\StayImportResultDto.cs" />
-    <Compile Include="Models\StayImportResultDtoCollection.cs" />
-    <Compile Include="Models\StayReservationDto.cs" />
-    <Compile Include="Models\StayReservationDtoCollection.cs" />
-    <Compile Include="Models\SubServiceDto.cs" />
-    <Compile Include="Models\SubServiceTypeDto.cs" />
+    <Compile Include="GuestDto.cs" />
+    <Compile Include="PointOfInterestDto.cs" />
+    <Compile Include="RequestCategoryDto.cs" />
+    <Compile Include="RequestDto.cs" />
+    <Compile Include="RequestModel.cs" />
+    <Compile Include="RequestProductDto.cs" />
+    <Compile Include="RequestProductOptionDto.cs" />
+    <Compile Include="RequestStateModelIntegration.cs" />
+    <Compile Include="SetRequestAsIntegratedModel.cs" />
+    <Compile Include="StayImportModel.cs" />
+    <Compile Include="StayImportResultDto.cs" />
+    <Compile Include="StayReservationDto.cs" />
+    <Compile Include="SubServiceDto.cs" />
+    <Compile Include="SubServiceTypeDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

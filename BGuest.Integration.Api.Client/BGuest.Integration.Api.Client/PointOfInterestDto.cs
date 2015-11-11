@@ -5,32 +5,20 @@ using System;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 
-namespace BGuest.Integration.Api.Client.Models
+namespace BGuest.Integration.Api.Client
 {
-    public partial class PointOfInterestDto
+    public class PointOfInterestDto
     {
-        private string _id;
-        
         /// <summary>
         /// Optional. Id
         /// </summary>
-        public string ID
-        {
-            get { return this._id; }
-            set { this._id = value; }
-        }
-        
-        private string _name;
-        
+        public string Id { get; set; }
+
         /// <summary>
         /// Optional. Name
         /// </summary>
-        public string Name
-        {
-            get { return this._name; }
-            set { this._name = value; }
-        }
-        
+        public string Name { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the PointOfInterestDto class.
         /// </summary>
@@ -48,7 +36,7 @@ namespace BGuest.Integration.Api.Client.Models
                 JToken idValue = inputObject["id"];
                 if (idValue != null && idValue.Type != JTokenType.Null)
                 {
-                    this.ID = ((string)idValue);
+                    this.Id = ((string)idValue);
                 }
                 JToken nameValue = inputObject["name"];
                 if (nameValue != null && nameValue.Type != JTokenType.Null)

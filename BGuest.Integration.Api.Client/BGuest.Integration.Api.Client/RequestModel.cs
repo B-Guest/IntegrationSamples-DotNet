@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace BGuest.Integration.Api.Client.Models
+namespace BGuest.Integration.Api.Client
 {
     public class RequestModel
     {
@@ -13,7 +13,7 @@ namespace BGuest.Integration.Api.Client.Models
         public string GuestComments { get; set; }
         public string HotelComments { get; set; }
         public bool ExpressDelivery { get; set; }
-        public int state { get; set; }
+        public int State { get; set; }
         public DateTimeOffset? StartedOn { get; set; }
         public DateTimeOffset? ReadyOn { get; set; }
         public DateTimeOffset? CompletedOn { get; set; }
