@@ -8,22 +8,24 @@ namespace BGuest.Integration.Api.Client
 {
     public class BGuestIntegrationClient : IDisposable
     {
+        private HttpClient _client;
+
         #region Properties
 
         /// <summary>
         /// The base URI of the service.
         /// </summary>
-        public Uri BaseUri { get; set; }
+        public Uri BaseUri { get; }
 
         /// <summary>
         /// Api key to be used for all service requests. 
         /// </summary>
-        public Guid ApiKey { get; set; }
+        public Guid ApiKey { get; }
 
         /// <summary>
         /// Api secreet to be used for all service requests. 
         /// </summary>
-        public string ApiSecret { get; set; }
+        public string ApiSecret { get; }
 
         #endregion
 
@@ -32,258 +34,172 @@ namespace BGuest.Integration.Api.Client
             BaseUri = new Uri(baseUri);
             ApiKey = apiKey;
             ApiSecret = apiSecret;
+            _client = new HttpClient
+            {
+                BaseAddress = BaseUri
+            };
+            _client.DefaultRequestHeaders.Accept.Clear();
+            _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
         #region Request
+
         public async Task<List<RequestDto>> GetRequestsAsync(int? fromId, int? skip, int? take)
         {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = BaseUri;
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            var requestApiUrl =
+                $"api/v2/requests?apiKey={ApiKey}&apiSecret={ApiSecret}&fromId={fromId}&skip={skip}&take={take}";
 
-                var requestApiUrl =
-                    $"api/v2/requests?apiKey={ApiKey}&apiSecret={ApiSecret}&fromId={fromId}&skip={skip}&take={take}";
+            var responseBGuest = await _client.GetAsync(requestApiUrl);
 
-                var responseBGuest = await client.GetAsync(requestApiUrl);
+            responseBGuest.EnsureSuccessStatusCode();
 
-                responseBGuest.EnsureSuccessStatusCode();
-
-                return await responseBGuest.Content.ReadAsAsync<List<RequestDto>>();
-            }
+            return await responseBGuest.Content.ReadAsAsync<List<RequestDto>>();
         }
+
         public async Task<List<RequestDto>> GetIntegratedRequestsAsync(int? fromId, int? skip, int? take)
         {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = BaseUri;
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            var requestApiUrl =
+                $"api/v2/requests/integrated?apiKey={ApiKey}&apiSecret={ApiSecret}&fromId={fromId}&skip={skip}&take={take}";
 
-                var requestApiUrl =
-                    $"api/v2/requests/integrated?apiKey={ApiKey}&apiSecret={ApiSecret}&fromId={fromId}&skip={skip}&take={take}";
+            var responseBGuest = await _client.GetAsync(requestApiUrl);
 
-                var responseBGuest = await client.GetAsync(requestApiUrl);
+            responseBGuest.EnsureSuccessStatusCode();
 
-                responseBGuest.EnsureSuccessStatusCode();
-
-                return await responseBGuest.Content.ReadAsAsync<List<RequestDto>>();
-            }
+            return await responseBGuest.Content.ReadAsAsync<List<RequestDto>>();
         }
+
         public async Task<RequestDto> GetRequestByIdAsync(int requestId)
         {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = BaseUri;
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            var requestApiUrl = $"api/v2/requests/{requestId}?apiKey={ApiKey}&apiSecret={ApiSecret}";
 
-                var requestApiUrl = $"api/v2/requests/{requestId}?apiKey={ApiKey}&apiSecret={ApiSecret}";
+            var responseBGuest = await _client.GetAsync(requestApiUrl);
 
-                var responseBGuest = await client.GetAsync(requestApiUrl);
+            responseBGuest.EnsureSuccessStatusCode();
 
-                responseBGuest.EnsureSuccessStatusCode();
-
-                return await responseBGuest.Content.ReadAsAsync<RequestDto>();
-            }
+            return await responseBGuest.Content.ReadAsAsync<RequestDto>();
         }
+
         public async Task<RequestDto> SetRequestAsIntegratedByIdAsync(int requestId, SetRequestAsIntegratedModel model)
         {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = BaseUri;
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            var requestApiUrl = $"api/v2/requests/{requestId}/integrated?apiKey={ApiKey}&apiSecret={ApiSecret}";
 
-                var requestApiUrl = $"api/v2/requests/{requestId}/integrated?apiKey={ApiKey}&apiSecret={ApiSecret}";
+            var responseBGuest = await _client.PutAsJsonAsync(requestApiUrl, model);
 
-                var responseBGuest = await client.PutAsJsonAsync(requestApiUrl, model);
+            responseBGuest.EnsureSuccessStatusCode();
 
-                responseBGuest.EnsureSuccessStatusCode();
-
-                return await responseBGuest.Content.ReadAsAsync<RequestDto>();
-            }
+            return await responseBGuest.Content.ReadAsAsync<RequestDto>();
         }
+
         public async Task<object> SetRequestStatusByIdAsync(int requestId, RequestStateModelIntegration model)
         {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = BaseUri;
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            var requestApiUrl = $"api/v2/requests/{requestId}/state?apiKey={ApiKey}&apiSecret={ApiSecret}";
 
-                var requestApiUrl = $"api/v2/requests/{requestId}/state?apiKey={ApiKey}&apiSecret={ApiSecret}";
+            var responseBGuest = await _client.PutAsJsonAsync(requestApiUrl, model);
 
-                var responseBGuest = await client.PutAsJsonAsync(requestApiUrl, model);
+            responseBGuest.EnsureSuccessStatusCode();
 
-                responseBGuest.EnsureSuccessStatusCode();
-
-                return await responseBGuest.Content.ReadAsAsync<object>();
-            }
+            return await responseBGuest.Content.ReadAsAsync<object>();
         }
+
         #endregion
 
         #region Stays
+
         public async Task<List<StayImportResultDto>> ImportStaysAsync(List<StayImportModel> stays)
         {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = BaseUri;
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            var requestApiUrl = $"api/v2/stays?apiKey={ApiKey}&apiSecret={ApiSecret}";
 
-                var requestApiUrl = $"api/v2/stays?apiKey={ApiKey}&apiSecret={ApiSecret}";
-
-                var responseBGuest = await client.PostAsJsonAsync(requestApiUrl, stays);
-                responseBGuest.EnsureSuccessStatusCode();
-                return await responseBGuest.Content.ReadAsAsync<List<StayImportResultDto>>();
-            }
+            var responseBGuest = await _client.PostAsJsonAsync(requestApiUrl, stays);
+            responseBGuest.EnsureSuccessStatusCode();
+            return await responseBGuest.Content.ReadAsAsync<List<StayImportResultDto>>();
         }
+
         public async Task<List<StayReservationDto>> GetImportedStaysAsync(int? fromId, int? skip, int? take)
         {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = BaseUri;
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            var requestApiUrl =
+                $"api/v2/stays/integrated?apiKey={ApiKey}&apiSecret={ApiSecret}&fromId={fromId}&skip={skip}&take={take}";
 
-                var requestApiUrl =
-                    $"api/v2/stays/integrated?apiKey={ApiKey}&apiSecret={ApiSecret}&fromId={fromId}&skip={skip}&take={take}";
+            var responseBGuest = await _client.GetAsync(requestApiUrl);
 
-                var responseBGuest = await client.GetAsync(requestApiUrl);
+            responseBGuest.EnsureSuccessStatusCode();
 
-                responseBGuest.EnsureSuccessStatusCode();
-
-                return await responseBGuest.Content.ReadAsAsync<List<StayReservationDto>>();
-            }
+            return await responseBGuest.Content.ReadAsAsync<List<StayReservationDto>>();
         }
+
         #endregion
 
         #region CheckInRequest
+
         public async Task<List<CheckInRequestDto>> GetCheckInRequestsAsync(int? fromId, int? skip, int? take)
         {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = BaseUri;
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            var requestApiUrl =
+                $"api/v2/requests/checkinrequests?apiKey={ApiKey}&apiSecret={ApiSecret}&fromId={fromId}&skip={skip}&take={take}";
 
-                var requestApiUrl =
-                    $"api/v2/requests/checkinrequests?apiKey={ApiKey}&apiSecret={ApiSecret}&fromId={fromId}&skip={skip}&take={take}";
+            var responseBGuest = await _client.GetAsync(requestApiUrl);
 
-                var responseBGuest = await client.GetAsync(requestApiUrl);
+            responseBGuest.EnsureSuccessStatusCode();
 
-                responseBGuest.EnsureSuccessStatusCode();
-
-                return await responseBGuest.Content.ReadAsAsync<List<CheckInRequestDto>>();
-            }
+            return await responseBGuest.Content.ReadAsAsync<List<CheckInRequestDto>>();
         }
+
         public async Task<List<CheckInRequestDto>> GetIntegratedCheckInRequestsAsync(int? fromId, int? skip, int? take)
         {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = BaseUri;
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            var requestApiUrl =
+                $"api/v2/requests/checkinrequests/integrated?apiKey={ApiKey}&apiSecret={ApiSecret}&fromId={fromId}&skip={skip}&take={take}";
 
-                var requestApiUrl =
-                    $"api/v2/requests/checkinrequests/integrated?apiKey={ApiKey}&apiSecret={ApiSecret}&fromId={fromId}&skip={skip}&take={take}";
+            var responseBGuest = await _client.GetAsync(requestApiUrl);
 
-                var responseBGuest = await client.GetAsync(requestApiUrl);
+            responseBGuest.EnsureSuccessStatusCode();
 
-                responseBGuest.EnsureSuccessStatusCode();
-
-                return await responseBGuest.Content.ReadAsAsync<List<CheckInRequestDto>>();
-            }
+            return await responseBGuest.Content.ReadAsAsync<List<CheckInRequestDto>>();
         }
+
         public async Task<CheckInRequestDto> GetCheckInRequestByIdAsync(int requestId)
         {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = BaseUri;
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            var requestApiUrl = $"api/v2/requests/checkinrequests/{requestId}?apiKey={ApiKey}&apiSecret={ApiSecret}";
 
-                var requestApiUrl = $"api/v2/requests/checkinrequests/{requestId}?apiKey={ApiKey}&apiSecret={ApiSecret}";
+            var responseBGuest = await _client.GetAsync(requestApiUrl);
 
-                var responseBGuest = await client.GetAsync(requestApiUrl);
+            responseBGuest.EnsureSuccessStatusCode();
 
-                responseBGuest.EnsureSuccessStatusCode();
-
-                return await responseBGuest.Content.ReadAsAsync<CheckInRequestDto>();
-            }
+            return await responseBGuest.Content.ReadAsAsync<CheckInRequestDto>();
         }
+
         public async Task<CheckInRequestDto> SetCheckInRequestAsIntegratedByIdAsync(int requestId, SetCheckInRequestAsIntegratedModel model)
         {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = BaseUri;
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            var requestApiUrl =
+                $"api/v2/requests/checkinrequests/{requestId}/integrated?apiKey={ApiKey}&apiSecret={ApiSecret}";
 
-                var requestApiUrl =
-                    $"api/v2/requests/checkinrequests/{requestId}/integrated?apiKey={ApiKey}&apiSecret={ApiSecret}";
+            var responseBGuest = await _client.PutAsJsonAsync(requestApiUrl, model);
 
-                var responseBGuest = await client.PutAsJsonAsync(requestApiUrl, model);
+            responseBGuest.EnsureSuccessStatusCode();
 
-                responseBGuest.EnsureSuccessStatusCode();
-
-                return await responseBGuest.Content.ReadAsAsync<CheckInRequestDto>();
-            }
+            return await responseBGuest.Content.ReadAsAsync<CheckInRequestDto>();
         }
+
         public async Task<object> SetCheckInRequestStatusByIdAsync(int requestId, CheckInRequestStateModelIntegration model)
         {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = BaseUri;
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            var requestApiUrl =
+                $"api/v2/requests/checkinrequests/{requestId}/state?apiKey={ApiKey}&apiSecret={ApiSecret}";
 
-                var requestApiUrl =
-                    $"api/v2/requests/checkinrequests/{requestId}/state?apiKey={ApiKey}&apiSecret={ApiSecret}";
+            var responseBGuest = await _client.PutAsJsonAsync(requestApiUrl, model);
 
-                var responseBGuest = await client.PutAsJsonAsync(requestApiUrl, model);
+            responseBGuest.EnsureSuccessStatusCode();
 
-                responseBGuest.EnsureSuccessStatusCode();
-
-                return await responseBGuest.Content.ReadAsAsync<object>();
-            }
+            return await responseBGuest.Content.ReadAsAsync<object>();
         }
+
         #endregion
 
         #region IDisposable Support
-        private bool _disposedValue = false; // To detect redundant calls
 
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!_disposedValue)
-            {
-                if (disposing)
-                {
-                    // TODO: dispose managed state (managed objects).
-                }
-
-                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
-                // TODO: set large fields to null.
-
-                _disposedValue = true;
-            }
-        }
-
-        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
-        // ~BGuestIntegrationClient() {
-        //   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-        //   Dispose(false);
-        // }
-
-        // This code added to correctly implement the disposable pattern.
         public void Dispose()
         {
-            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-            Dispose(true);
-            // TODO: uncomment the following line if the finalizer is overridden above.
-            // GC.SuppressFinalize(this);
+            if (_client != null)
+            {
+                _client.Dispose();
+                _client = null;
+            }
         }
         #endregion
 
