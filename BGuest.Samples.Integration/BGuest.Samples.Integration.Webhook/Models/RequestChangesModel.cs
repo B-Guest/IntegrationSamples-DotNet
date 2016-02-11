@@ -30,4 +30,14 @@ namespace BGuest.Samples.Integration.Webhook.Models
         public bool IsIntegratedOnPms { get; set; }
     }
 
+    public class CheckOutRequestChangesModel
+    {
+        [Required]
+        public int RequestId { get; set; }
+        public string Operation { get; set; }
+        public string ChangedBy { get; set; }
+        public string ExternalKey { get; set; }
+        public bool IsIntegratedOnPms { get; set; }
+    }
+
 }
