@@ -68,6 +68,11 @@ namespace BGuest.Integration.Api.Client
         /// </summary>      
         public string GuestLastName { get; set; }
 
+        /// <summary>
+        /// Guest phone number
+        /// </summary>      
+        public string GuestPhoneNumber { get; set; }
+
 
         /// <summary>
         /// Required. Indicated if the breakfast is included on the stay

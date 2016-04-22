@@ -1,0 +1,3 @@
+﻿Reservation	GuestEmail	GuestFirstName	GuestLastName	PeriodStart	PeriodEnd
+abc	example@b-guest.com	John	Doe	2015-11-27T09:00:00+01:00	2015-11-30T09:00:00+01:00
+999	test@b-guest.com	Test	User	2015-10-10T09:00:00+01:00	2015-10-20T09:00:00+01:00
