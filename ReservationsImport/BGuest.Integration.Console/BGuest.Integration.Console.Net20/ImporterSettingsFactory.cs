@@ -4,7 +4,7 @@ using System.Configuration;
 using System.IO;
 using Newtonsoft.Json;
 
-namespace BGuest.Integration.Console.Net20.Net20
+namespace BGuest.Integration.Console.Net20
 {
     public static class ImporterSettingsFactories
     {

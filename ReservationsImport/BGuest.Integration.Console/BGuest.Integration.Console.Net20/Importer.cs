@@ -10,7 +10,7 @@ using Dapper;
 using Mindscape.Raygun4Net;
 using RestSharp;
 
-namespace BGuest.Integration.Console.Net20.Net20
+namespace BGuest.Integration.Console.Net20
 {
     public class Importer
     {
