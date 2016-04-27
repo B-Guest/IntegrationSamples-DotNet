@@ -1,0 +1,14 @@
+﻿[
+  {
+    "HotelDescription": "Hotel 1 Name",
+    "HotelId": "Hotel_1_ID_from_DB",
+    "ApiKey": "HOTEL1_API_KEY",
+    "ApiSecret": "HOTEL1_API_SECRET"
+  },
+  {
+    "HotelDescription": "Hotel 2 Name",
+    "HotelId": "Hotel_2_ID_from_DB",
+    "ApiKey": "HOTEL2_API_KEY",
+    "ApiSecret": "HOTEL2_API_SECRET"
+  }
+]
