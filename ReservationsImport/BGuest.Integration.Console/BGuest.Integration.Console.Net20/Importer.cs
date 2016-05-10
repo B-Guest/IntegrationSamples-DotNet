@@ -37,6 +37,9 @@ namespace BGuest.Integration.Console.Net20
                 var settings = ImporterSettingsFactories.GetFactory("File");
                 RaygunTags.Add(settings.HotelDescription);
 
+                Log.AppendFormat("Hotel {0}", settings.HotelDescription);
+                Log.AppendLine();
+
                 Log.AppendLine();
                 Log.AppendFormat("Db client Provider {0}", settings.ConnectionString.ProviderName);
                 Log.AppendLine();
