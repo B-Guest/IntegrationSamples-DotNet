@@ -50,7 +50,7 @@ namespace BGuest.Integration.Console
                 Log.AppendFormat("Db provider ok: " + dbFactory);
                 Log.AppendLine();
 
-                ImportTemplate(dbFactory, settings);
+                //ImportTemplate(dbFactory, settings);
                 Log.AppendLine();
                 Log.AppendFormat("Import Ended at {0}", DateTime.Now);
                 SendMail.ResultLogAsync(Log.ToString());

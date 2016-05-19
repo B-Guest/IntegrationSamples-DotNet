@@ -35,7 +35,7 @@ namespace BGuest.Integration.Console
     {
         public string HotelDescription { get; set; }
         public string HotelId { get; set; }
-        public Guid ApiKey { get; set; }
+        public string ApiKey { get; set; }
         public string ApiSecret { get; set; }
 
     }

@@ -11,10 +11,11 @@ namespace BGuest.Integration.Console
     {
         public static void ResultLogAsync(string logMessage)
         {
+            var htmlText = "<body>" + logMessage.Replace(Environment.NewLine, "<br/>") + "</body>";
             var sendgridMsg = new SendGridMessage
             {
                 Subject = "Reservation import log",
-                Text = logMessage
+                Html = htmlText
             };
             SendGridMessage(sendgridMsg);
         }
