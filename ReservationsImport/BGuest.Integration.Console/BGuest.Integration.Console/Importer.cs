@@ -49,7 +49,7 @@ namespace BGuest.Integration.Console
 
                 Log.AppendFormat("Db provider ok: " + dbFactory);
                 Log.AppendLine();
-
+                
                 ImportTemplate(dbFactory, settings);
                 Log.AppendLine();
                 Log.AppendFormat("Import Ended at {0}", DateTime.Now);
@@ -63,12 +63,16 @@ namespace BGuest.Integration.Console
             catch(Exception e)
             {
                 SendToRaygun(e);
-                System.Console.WriteLine(e.Message);
+                Log.AppendLine("Exception thrwon:");
+                Log.AppendLine(e.Message);
                 while (null != e.InnerException)
                 {
                     e = e.InnerException;
-                    System.Console.WriteLine(e.Message);
+                    Log.AppendLine(e.Message);
                 }
+                Log.AppendLine("Stack trace:");
+                Log.AppendLine(e.StackTrace);
+                SendMail.ResultLogAsync(Log.ToString());
 #if DEBUG
                 System.Console.WriteLine(Log.ToString());
                 System.Console.ReadKey();

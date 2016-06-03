@@ -62,12 +62,16 @@ namespace BGuest.Integration.Console.Net20
             catch(Exception e)
             {
                 SendToRaygun(e);
-                System.Console.WriteLine(e.Message);
+                Log.AppendLine("Exception thrwon:");
+                Log.AppendLine(e.Message);
                 while (null != e.InnerException)
                 {
                     e = e.InnerException;
-                    System.Console.WriteLine(e.Message);
+                    Log.AppendLine(e.Message);
                 }
+                Log.AppendLine("Stack trace:");
+                Log.AppendLine(e.StackTrace);
+                SendMail.ResultLogAsync(Log.ToString());
 #if DEBUG
                 System.Console.WriteLine(Log.ToString());
                 System.Console.ReadKey();
