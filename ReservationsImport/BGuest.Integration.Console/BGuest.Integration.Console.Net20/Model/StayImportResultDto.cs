@@ -10,6 +10,8 @@ namespace BGuest.Integration.Console.Net20.Model
 
         public string Message { get; set; }
 
+        public string Data { get; set; }
+
         public bool Success { get; set; }
     }
 }
