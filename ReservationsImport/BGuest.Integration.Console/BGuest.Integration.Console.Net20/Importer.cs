@@ -10,6 +10,7 @@ using Dapper;
 using Mindscape.Raygun4Net;
 using RestSharp;
 using System.Net;
+using Newtonsoft.Json;
 
 namespace BGuest.Integration.Console.Net20
 {
@@ -151,7 +152,8 @@ namespace BGuest.Integration.Console.Net20
             var requestApiUrl = $"api/v2/stays?apiKey={apiKey}&apiSecret={apiSecret}";
 
             var request = new RestRequest(requestApiUrl, Method.POST);
-            request.AddJsonBody(stays);
+            var jsonStaysBody = JsonConvert.SerializeObject(stays);
+            request.AddParameter("application/json", jsonStaysBody);
 
             var responseBGuest = client.Execute<List<StayImportResultDto>>(request);
             if (responseBGuest.ErrorException == null)
