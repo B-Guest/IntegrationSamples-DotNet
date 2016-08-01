@@ -153,7 +153,7 @@ namespace BGuest.Integration.Console.Net20
 
             var request = new RestRequest(requestApiUrl, Method.POST);
             var jsonStaysBody = JsonConvert.SerializeObject(stays);
-            request.AddParameter("application/json", jsonStaysBody);
+            request.AddParameter("application/json", jsonStaysBody, ParameterType.RequestBody);
 
             var responseBGuest = client.Execute<List<StayImportResultDto>>(request);
             if (responseBGuest.ErrorException == null)
