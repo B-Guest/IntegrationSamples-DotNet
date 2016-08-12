@@ -109,10 +109,7 @@ namespace BGuest.Integration.Console.Net20
                         if (string.IsNullOrEmpty(reserv.HotelId) ||
                             string.IsNullOrEmpty(reserv.ExternalKey) ||
                             reserv.PeriodStart.Equals(DateTime.MinValue) ||
-                            reserv.PeriodEnd.Equals(DateTime.MinValue) ||
-                            string.IsNullOrEmpty(reserv.GuestFirstName) ||
-                            string.IsNullOrEmpty(reserv.GuestLastName) ||
-                            string.IsNullOrEmpty(reserv.GuestEmail))
+                            reserv.PeriodEnd.Equals(DateTime.MinValue))
                         {
                             resultsLogger.AddResponse(new StayImportResultDto
                             {

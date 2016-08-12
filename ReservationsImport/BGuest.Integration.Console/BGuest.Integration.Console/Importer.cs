@@ -100,10 +100,7 @@ namespace BGuest.Integration.Console
                         if (string.IsNullOrWhiteSpace(reserv.HotelId) || 
                             string.IsNullOrWhiteSpace(reserv.ExternalKey) ||
                             reserv.PeriodStart.Equals(DateTime.MinValue) ||
-                            reserv.PeriodEnd.Equals(DateTime.MinValue) ||
-                            string.IsNullOrWhiteSpace(reserv.GuestFirstName) ||
-                            string.IsNullOrWhiteSpace(reserv.GuestLastName) ||
-                            string.IsNullOrWhiteSpace(reserv.GuestEmail))
+                            reserv.PeriodEnd.Equals(DateTime.MinValue))
                         {
                             resultsLogger.AddResponse(new StayImportResultDto {
                                 Success = false,
