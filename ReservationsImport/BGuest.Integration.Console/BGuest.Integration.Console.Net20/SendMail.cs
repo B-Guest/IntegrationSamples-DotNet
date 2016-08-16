@@ -40,7 +40,6 @@ namespace BGuest.Integration.Console.Net20
 
             string destinations = string.Empty;
 
-            //var requestApiUrl = $"api/mail.send.json?api_user={userName}&api_key={pwd}&{destinations}&subject={message.Subject}&text={message.Text}&from={fromAddress}&fromname={fromName}";
             var requestApiUrl = $"api/mail.send.json";
 
             var request = new RestRequest(requestApiUrl, Method.POST);

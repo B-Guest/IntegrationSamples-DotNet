@@ -21,7 +21,7 @@ namespace BGuest.Integration.Console.Net20
 
         public static void SendToRaygun(Exception e)
         {
-            RaygunClient.SendInBackground(e, RaygunTags);
+            RaygunClient.Send(e, RaygunTags);
         }
 
         public static StringBuilder Log { get; set; }
@@ -67,15 +67,17 @@ namespace BGuest.Integration.Console.Net20
             catch (Exception e)
             {
                 SendToRaygun(e);
-                Log.AppendLine("Exception thrwon:");
+                Log.AppendLine("Exception thrown:");
                 Log.AppendLine(e.Message);
+                Log.AppendLine("Stack trace:");
+                Log.AppendLine(e.StackTrace);
                 while (null != e.InnerException)
                 {
                     e = e.InnerException;
                     Log.AppendLine(e.Message);
+                    Log.AppendLine("Stack trace:");
+                    Log.AppendLine(e.StackTrace);
                 }
-                Log.AppendLine("Stack trace:");
-                Log.AppendLine(e.StackTrace);
                 SendMail.ResultLogAsync(Log.ToString());
 #if DEBUG
                 System.Console.ReadKey();
