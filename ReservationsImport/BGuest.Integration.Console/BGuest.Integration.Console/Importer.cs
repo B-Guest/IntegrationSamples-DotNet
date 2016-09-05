@@ -55,9 +55,7 @@ namespace BGuest.Integration.Console
                 Log.AppendFormat("Import Ended at {0}", DateTime.Now);
                 SendMail.ResultLogAsync(Log.ToString());
                 System.Console.WriteLine(Log.ToString());
-#if DEBUG
-                System.Console.ReadKey();
-#endif
+
                 return 0;
             }
             catch(Exception e)
