@@ -37,5 +37,8 @@ namespace BGuest.Integration.Console.Net20.Model
         public string Room { get; set; }
 
         public StayStates State { get; set; }
+        public string RegimenType { get; set; }
+        public string RegimenTypeDescription { get; set; }
+        public int? NumberOfGuests { get; set; }
     }
 }
