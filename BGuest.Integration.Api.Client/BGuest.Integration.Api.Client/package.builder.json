@@ -25,7 +25,10 @@
   // Limit the package generation to a specific build configuration.
   // Leaving this value empty will always trigger package generation
   // Note: config parameter was introduced in release 1.0.7
-  "Configuration": "Release",
+  "Configuration": "",
+
+  // Specifies one or more wildcard patterns to exclude when creating a package.
+  "Exclude": "",
 
   "Publish": {
     // Publish nuget package on build.
@@ -44,6 +47,11 @@
     // is set in the NuGet config file. If NuGet.exe identifies a UNC/folder source, it will perform the file copy to the source
     // You can override this behavior by parsing in a MSBuild property named PublishSource.
     "Source": "",
+
+    // Specifies the symbol server URL.
+    // If the presence of a .symbols.nupkg package is detected e.g.Symbols = "true" it will be automatically pushed to SymbolSource.org unless
+    // an alternative symbol source is specified.
+    "SymbolSource": "",
 
     // Specifies the timeout for pushing to a server in seconds. Defaults to 300 seconds (5 minutes).
     "Timeout": 300

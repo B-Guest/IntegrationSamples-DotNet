@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>$id$</id>
-    <version>2.4.0</version>
+    <version>2.5.0</version>
     <title>$title$</title>
     <authors>BGuest</authors>
     <owners>BGuest</owners>
@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/B-Guest/IntegrationSamples-DotNet</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Support for .net framework 4.5</releaseNotes>
+    <releaseNotes>Added support to regimen type and a list of other guests</releaseNotes>
     <copyright>Copyright 2015</copyright>
     <tags>BGuest Integration Api .Net Client</tags>
   </metadata>

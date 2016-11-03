@@ -1,6 +1,8 @@
 ﻿using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace BGuest.Integration.Api.Client
 {
@@ -18,6 +20,65 @@ namespace BGuest.Integration.Api.Client
         /// Stay / reservation is inactive or canceled for some reason.
         /// </summary>
         Removed = -1
+    }
+
+    /// <summary>
+    /// Stay/reservation possible BGuest's states
+    /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum GuestGender
+    {
+        /// <summary>
+        /// Guest gender is unknown
+        /// </summary>
+        None = 0,
+        /// <summary>
+        /// Guest is Male
+        /// </summary>
+        Male = 1,
+        /// <summary>
+        /// Guest is Female
+        /// </summary>
+        Female = 2,
+    }
+
+
+    /// <summary>
+    /// Stay/reservation other guest model
+    /// </summary>
+    public class StayImportOtherGuestModel
+    {
+        /// <summary>
+        /// Guest email
+        /// </summary>
+        public string GuestEmail { get; set; }
+        /// <summary>
+        /// Guest first name
+        /// </summary>      
+        public string GuestFirstName { get; set; }
+        /// <summary>
+        /// Guest last name
+        /// </summary>
+        public string GuestLastName { get; set; }
+        /// <summary>
+        /// Guest phone number
+        /// </summary>
+        [StringLength(255)]
+        public string GuestPhoneNumber { get; set; }
+        /// <summary>
+        /// Guest country. Two characters ISO-Alpha-2 code.
+        /// </summary>
+        [StringLength(2)]
+        public string GuestCountryCode { get; set; }
+        /// <summary>
+        /// Guest birth date.
+        /// </summary>
+        public DateTime? GuestBirthDate { get; set; }
+        /// <summary>
+        /// Guest gender.
+        /// Possible values are None, Male or Female
+        /// </summary>
+        public GuestGender? GuestGender { get; set; }
     }
 
     public class StayImportModel
@@ -109,6 +170,43 @@ namespace BGuest.Integration.Api.Client
         /// Possible values are Active or Removed.
         /// </summary>
         public StayStates State { get; set; }
+        /// <summary>
+        /// Regimen type.
+        /// </summary>
+        [StringLength(255)]
+        public string RegimenType { get; set; }
+        /// <summary>
+        /// Regimen type description
+        /// </summary>
+        [StringLength(1024)]
+        public string RegimenTypeDescription { get; set; }
+        /// <summary>
+        /// Number of guests.
+        /// </summary>
+        public int? NumberOfGuests { get; set; }
+        /// <summary>
+        /// Guest email 
+        /// </summary>
+        /// <summary>
+        /// Guest country. Two characters ISO-Alpha-2 code.
+        /// </summary>
+        [StringLength(2)]
+        public string GuestCountryCode { get; set; }
+        /// <summary>
+        /// Guest birth date.
+        /// </summary>
+        public DateTime? GuestBirthDate { get; set; }
+        /// <summary>
+        /// Guest gender.
+        /// Possible values are None, Male or Female
+        /// </summary>
+        public GuestGender? GuestGender { get; set; }
+
+        /// <summary>
+        /// OtherGuests. 
+        /// List of other guest in the reservation.
+        /// </summary>
+        public IEnumerable<StayImportOtherGuestModel> OtherGuests { get; set; }
 
         ///// <summary>
         ///// Initializes a new instance of the StayImportModel class.
@@ -116,7 +214,7 @@ namespace BGuest.Integration.Api.Client
         //public StayImportModel()
         //{
         //}
-        
+
         ///// <summary>
         ///// Serialize the object
         ///// </summary>
