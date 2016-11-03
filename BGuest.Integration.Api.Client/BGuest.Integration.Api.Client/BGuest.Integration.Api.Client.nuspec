@@ -12,13 +12,13 @@
 		<id>$id$</id>
 		<!-- This will use the AssemblyVersion -->
 		<version>$version$</version>
-		<title>Your title goes here</title>
-		<description>Your description goes here</description>
-		<authors>You</authors>
-		<owners>You</owners>
+		<title>$title$</title>
+		<description>$description$</description>
+		<authors>BGuest</authors>
+		<owners>BGuest</owners>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
-		<releaseNotes>Initial release.</releaseNotes>
+		<releaseNotes>Added support to regimen type and a list of other guests</releaseNotes>
 		<copyright>Copyright 2015</copyright>
-		<tags>ANY</tags>
+		<tags>BGuest Integration Api .Net Client</tags>
 	</metadata>
 </package>
