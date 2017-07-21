@@ -79,6 +79,90 @@ namespace BGuest.Integration.Api.Client
         /// Possible values are None, Male or Female
         /// </summary>
         public GuestGender? GuestGender { get; set; }
+
+        /// <summary>
+        /// External system Guest id. Place your guest/cardex ID on this field. 
+        /// You can refer to guest/cardex later through this key.
+        /// </summary>
+        public string ExternalGuestKey { get; set; }
+
+        /// <summary>
+        /// Guest title. 
+        /// Ex: Sir, Ms, Madam, Mrs, Miss.
+        /// </summary>
+        public string GuestTitle { get; set; }
+
+        /// <summary>
+        /// Guest Address. 
+        /// </summary>
+        public string GuestAddress { get; set; }
+
+        /// <summary>
+        /// Guest Address Country. 
+        /// </summary>
+        public string GuestAddressCountry { get; set; }
+
+        /// <summary>
+        /// Guest Address ZipCode. 
+        /// </summary>
+        public string GuestZipCode { get; set; }
+
+        /// <summary>
+        /// Guest Address City. 
+        /// </summary>
+        public string GuestCity { get; set; }
+
+        /// <summary>
+        /// Guest identification card number. 
+        /// </summary>
+        public string GuestIdentification { get; set; }
+
+        /// <summary>
+        /// Guest identification card expiration date. 
+        /// </summary>
+        public DateTime? GuestIdentificationExpiryDate { get; set; }
+
+        /// <summary>
+        /// Guest identification card issue date. 
+        /// </summary>
+        public DateTime? GuestIdentificationIssueDate { get; set; }
+
+        /// <summary>
+        /// Guest identification card type. 
+        /// Possible values are 1 (IdentificationCard) and 2 (Passport).
+        /// </summary>
+        public int? GuestIdentificationCardType { get; set; }
+
+        /// <summary>
+        /// Guest OtherNames. 
+        /// </summary>
+        public string GuestOtherNames { get; set; }
+
+        /// <summary>
+        /// Guest Birth Place. 
+        /// City where the guest was born.
+        /// </summary>
+        public string GuestBirthPlace { get; set; }
+    }
+
+    public class StayImportRoomModel
+    {
+        /// <summary>
+        /// Room category code
+        /// </summary>
+        public string CategoryCode { get; set; }
+        /// <summary>
+        /// Room category description
+        /// </summary>
+        public string CategoryDescription { get; set; }
+        /// <summary>
+        /// Room capacity
+        /// </summary>
+        public int? Capacity { get; set; }
+        /// <summary>
+        /// Room number
+        /// </summary>
+        public string RoomNumber { get; set; }
     }
 
     public class StayImportModel
@@ -203,10 +287,115 @@ namespace BGuest.Integration.Api.Client
         public GuestGender? GuestGender { get; set; }
 
         /// <summary>
+        /// Number of children from Group 1. 
+        /// Usually age between 0 and 3.
+        /// </summary>
+        public int? NumberOfChildrenGroup1 { get; set; }
+
+        /// <summary>
+        /// Number of children from Group 2. 
+        /// Usually age between 4 and 12.
+        /// </summary>
+        public int? NumberOfChildrenGroup2 { get; set; }
+
+        /// <summary>
+        /// Number of children from Group 3. 
+        /// Usually age between 13 and 18.
+        /// </summary>
+        public int? NumberOfChildrenGroup3 { get; set; }
+
+        /// <summary>
+        /// External system Guest id. Place your guest/cardex ID on this field. 
+        /// You can refer to guest/cardex later through this key.
+        /// </summary>
+        public string ExternalGuestKey { get; set; }
+
+        /// <summary>
+        /// Guest title. 
+        /// Ex: Sir, Ms, Madam, Mrs, Miss.
+        /// To be used in E-Mails, SMS, Messenger or other communication between the Hotel and Guest
+        /// </summary>
+        public string GuestTitle { get; set; }
+
+        /// <summary>
+        /// Vehicle Plate Number. 
+        /// </summary>
+        public string VehiclePlateNumber { get; set; }
+
+        /// <summary>
+        /// Guest Vat Number. 
+        /// </summary>
+        public string VatNumber { get; set; }
+
+        /// <summary>
+        /// Guest Address. 
+        /// </summary>
+        public string GuestAddress { get; set; }
+
+        /// <summary>
+        /// Guest Address Country. 
+        /// </summary>
+        public string GuestAddressCountry { get; set; }
+
+        /// <summary>
+        /// Guest Address ZipCode. 
+        /// </summary>
+        public string GuestZipCode { get; set; }
+
+        /// <summary>
+        /// Guest Address City. 
+        /// </summary>
+        public string GuestCity { get; set; }
+
+        /// <summary>
+        /// Stay/Reservation comments.
+        /// </summary>
+        public string Comments { get; set; }
+
+        /// <summary>
+        /// Guest identification card number. 
+        /// </summary>
+        public string GuestIdentification { get; set; }
+
+        /// <summary>
+        /// Guest identification card expiration date. 
+        /// </summary>
+        public DateTime? GuestIdentificationExpiryDate { get; set; }
+
+        /// <summary>
+        /// Guest identification card issue date. 
+        /// </summary>
+        public DateTime? GuestIdentificationIssueDate { get; set; }
+
+        /// <summary>
+        /// Guest identification card type. 
+        /// Possible values are 1 (IdentificationCard) and 2 (Passport).
+        /// </summary>
+        public int? GuestIdentificationCardType { get; set; }
+
+        /// <summary>
+        /// Guest OtherNames. 
+        /// </summary>
+        public string GuestOtherNames { get; set; }
+
+        /// <summary>
+        /// Guest Birth Place. 
+        /// City where the guest was born.
+        /// </summary>
+        public string GuestBirthPlace { get; set; }
+
+        /// <summary>
         /// OtherGuests. 
         /// List of other guest in the reservation.
         /// </summary>
         public IEnumerable<StayImportOtherGuestModel> OtherGuests { get; set; }
+
+        /// <summary>
+        /// Reservation Rooms. 
+        /// List of rooms in the reservation.
+        /// </summary>
+        public IEnumerable<StayImportRoomModel> Rooms { get; set; }
+
 
         ///// <summary>
         ///// Initializes a new instance of the StayImportModel class.
