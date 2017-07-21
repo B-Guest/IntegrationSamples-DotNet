@@ -17,7 +17,7 @@
 		<authors>BGuest</authors>
 		<owners>BGuest</owners>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
-		<releaseNotes>Added support to regimen type and a list of other guests</releaseNotes>
+		<releaseNotes>Added support to Room info. Add guest address and identification card info fields</releaseNotes>
 		<copyright>Copyright 2015</copyright>
 		<tags>BGuest Integration Api .Net Client</tags>
 	</metadata>
