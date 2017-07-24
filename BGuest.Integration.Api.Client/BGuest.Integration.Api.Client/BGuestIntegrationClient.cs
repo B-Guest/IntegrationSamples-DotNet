@@ -189,6 +189,17 @@ namespace BGuest.Integration.Api.Client
             return await responseBGuest.Content.ReadAsAsync<object>();
         }
 
+        public async Task<IEnumerable<CheckInRequestDto>> GetCheckInRequestsToIntegrateAsync(int? skip, int? take)
+        {
+            var requestApiUrl = $"api/v2/requests/checkinrequests/tointegrate?apiKey={ApiKey}&apiSecret={ApiSecret}&skip={skip}&take={take}";
+
+            var responseBGuest = await _client.GetAsync(requestApiUrl);
+
+            responseBGuest.EnsureSuccessStatusCode();
+
+            return await responseBGuest.Content.ReadAsAsync<List<CheckInRequestDto>>();
+        }
+
         #endregion
 
         #region IDisposable Support

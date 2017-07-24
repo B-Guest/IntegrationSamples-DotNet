@@ -296,29 +296,75 @@ namespace BGuest.Integration.Api.Client
         /// </summary>
         public string Reservation { get; set; }
         /// <summary>
-        /// Guest first name.
+        /// Reservation External Key.
+        /// </summary>
+        public string ReservationExternalKey { get; set; }
+        /// <summary>
+        /// Reservation first name.
+        /// </summary>
+        public string ReservationFirstName { get; set; }
+        /// <summary>
+        /// Reservation last name.
+        /// </summary>
+        public string ReservationLastName { get; set; }
+        /// <summary>
+        /// Reservation email address.
+        /// </summary>
+        public string ReservationEmail { get; set; }
+        /// <summary>
+        /// Reservation phone number.
+        /// </summary>
+        public string ReservationPhone { get; set; }
+        /// <summary>
+        /// Guest first name. (DEPRECATED)
         /// </summary>
         public string FirstName { get; set; }
         /// <summary>
-        /// Guest last name.
+        /// Guest last name. (DEPRECATED)
         /// </summary>
         public string LastName { get; set; }
         /// <summary>
-        /// Guest email address.
+        /// Guest email address. (DEPRECATED)
         /// </summary>
         public string Email { get; set; }
         /// <summary>
-        /// Guest phone number.
+        /// Guest phone number. (DEPRECATED)
         /// </summary>
         public string Phone { get; set; }
         /// <summary>
-        /// Guest identification card number.
+        /// Guest identification card number. (DEPRECATED)
         /// </summary>
         public string GuestIdentification { get; set; }
+        /// <summary>
+        /// Reservation number of Guests.
+        /// </summary>
+        public int? NumberOfGuests { get; set; }
+        /// <summary>
+        /// Reservation number of Children in Group 1.
+        /// Usually between 0 and 3 years age.
+        /// </summary>
+        public int? NumberOfChildrenGroup1 { get; set; }
+        /// <summary>
+        /// Reservation number of Children in Group 2.
+        /// Usually between 4 and 12 years age.
+        /// </summary>
+        public int? NumberOfChildrenGroup2 { get; set; }
+        /// <summary>
+        /// Reservation number of Children in Group 2.
+        /// Usually between 13 and 18 years age.
+        /// </summary>
+        public int? NumberOfChildrenGroup3 { get; set; }
+        /// <summary>
+        /// Request comments.
+        /// </summary>
+        public string Comments { get; set; }
         /// <summary>
         /// Date of creation
         /// </summary>
         public DateTimeOffset RequestedOn { get; set; }
+        /// <summary>                 
+        /// CheckIn request State. Possible values: New = 0, Confirmed = 1, Rejected = -1 or Removed = -2
+        /// </summary>   
         public int State { get; set; }
         /// <summary>                 
         /// Date when Request state was changed to "Confirmed"
@@ -341,12 +387,20 @@ namespace BGuest.Integration.Api.Client
         /// </summary>
         public bool IsIntegratedOnPms { get; set; }
         /// <summary>
-        /// The guest 
+        /// Main guest information
         /// </summary>
-        public GuestDto Guest { get; set; }
+        public CheckInMainGuestDto Guest { get; set; }
         /// <summary>
         /// The request's external system key
         /// </summary>
         public string ExternalKey { get; set; }
+        /// <summary>
+        /// The request's type. It can be Online CheckIn (1) or Frontdesk CheckIn (2)
+        /// </summary>
+        public int? CheckInType { get; set; }
+        /// <summary>
+        /// List of other guests included in Check-in process
+        /// </summary>
+        public IEnumerable<CheckInGuestDto> OtherGuests { get; set; }
     }
 }
