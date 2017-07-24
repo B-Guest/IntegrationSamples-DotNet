@@ -316,24 +316,29 @@ namespace BGuest.Integration.Api.Client
         /// </summary>
         public string ReservationPhone { get; set; }
         /// <summary>
-        /// Guest first name. (DEPRECATED)
+        /// Guest first name. (DEPRECATED) - Please use Guest.FirstName
         /// </summary>
+        [Obsolete]
         public string FirstName { get; set; }
         /// <summary>
-        /// Guest last name. (DEPRECATED)
+        /// Guest last name. (DEPRECATED) - Please use Guest.LastName
         /// </summary>
+        [Obsolete]
         public string LastName { get; set; }
         /// <summary>
-        /// Guest email address. (DEPRECATED)
+        /// Guest email address. (DEPRECATED) - Please use Guest.Email
         /// </summary>
+        [Obsolete]
         public string Email { get; set; }
         /// <summary>
-        /// Guest phone number. (DEPRECATED)
+        /// Guest phone number. (DEPRECATED) - Please user Guest.Phone
         /// </summary>
+        [Obsolete]
         public string Phone { get; set; }
         /// <summary>
-        /// Guest identification card number. (DEPRECATED)
+        /// Guest identification card number. (DEPRECATED) - Please use Guest.Identification
         /// </summary>
+        [Obsolete]
         public string GuestIdentification { get; set; }
         /// <summary>
         /// Reservation number of Guests.
