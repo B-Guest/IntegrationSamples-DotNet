@@ -278,7 +278,7 @@ namespace BGuest.Integration.Api.Client
         /// <summary>
         /// CheckIn Request Id
         /// </summary>
-        public int Id { get; set; }
+        public string Id { get; set; }
         /// <summary>
         /// Checkin date
         /// </summary>
