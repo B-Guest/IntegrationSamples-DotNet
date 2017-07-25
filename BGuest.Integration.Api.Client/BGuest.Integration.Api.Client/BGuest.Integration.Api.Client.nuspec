@@ -19,6 +19,7 @@
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<releaseNotes>V2.7.0 - Added support to checkins tointegrate api endpoint.
 V2.7.1 - Fixed CheckIn DTO Id field type. It must be string instead of int.
+V2.7.2 - Fixed CheckIn DTO Id field type when setting the checkin as integrated. It must be string instead of int. 
     </releaseNotes>
 		<copyright>Copyright 2015</copyright>
 		<tags>BGuest Integration Api .Net Client</tags>
