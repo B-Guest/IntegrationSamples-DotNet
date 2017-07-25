@@ -17,7 +17,9 @@
 		<authors>BGuest</authors>
 		<owners>BGuest</owners>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
-		<releaseNotes>Added support to checkins tointegrate api endpoint</releaseNotes>
+		<releaseNotes>V2.7.0 - Added support to checkins tointegrate api endpoint.
+V2.7.1 - Fixed CheckIn DTO Id field type. It must be string instead of int.
+    </releaseNotes>
 		<copyright>Copyright 2015</copyright>
 		<tags>BGuest Integration Api .Net Client</tags>
 	</metadata>
