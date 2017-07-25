@@ -165,7 +165,7 @@ namespace BGuest.Integration.Api.Client
             return await responseBGuest.Content.ReadAsAsync<CheckInRequestDto>();
         }
 
-        public async Task<CheckInRequestDto> SetCheckInRequestAsIntegratedByIdAsync(int requestId, SetCheckInRequestAsIntegratedModel model)
+        public async Task<CheckInRequestDto> SetCheckInRequestAsIntegratedByIdAsync(string requestId, SetCheckInRequestAsIntegratedModel model)
         {
             var requestApiUrl =
                 $"api/v2/requests/checkinrequests/{requestId}/integrated?apiKey={ApiKey}&apiSecret={ApiSecret}";
@@ -177,7 +177,7 @@ namespace BGuest.Integration.Api.Client
             return await responseBGuest.Content.ReadAsAsync<CheckInRequestDto>();
         }
 
-        public async Task<object> SetCheckInRequestStatusByIdAsync(int requestId, CheckInRequestStateModelIntegration model)
+        public async Task<object> SetCheckInRequestStatusByIdAsync(string requestId, CheckInRequestStateModelIntegration model)
         {
             var requestApiUrl =
                 $"api/v2/requests/checkinrequests/{requestId}/state?apiKey={ApiKey}&apiSecret={ApiSecret}";
