@@ -56,6 +56,10 @@ namespace BGuest.Integration.Api.Client
         /// </summary>
         public int? GuestIdentificationCardType { get; set; }
         /// <summary>
+        /// Guest identification card issuer/issue place.
+        /// </summary>
+        public string GuestIdentificationCardIssuer { get; set; }
+        /// <summary>
         /// Guest birth date.
         /// </summary>
         public DateTime? Birthday { get; set; }
@@ -71,6 +75,10 @@ namespace BGuest.Integration.Api.Client
         /// Guest's address country.
         /// </summary>
         public string AddressCountry { get; set; }
+        /// <summary>
+        /// Guest Address Number.
+        /// </summary>
+        public string GuestAddressNumber { get; set; }
         /// <summary>
         /// Guest's zipcode.
         /// </summary>

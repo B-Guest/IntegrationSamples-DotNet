@@ -98,6 +98,11 @@ namespace BGuest.Integration.Api.Client
         public string GuestAddress { get; set; }
 
         /// <summary>
+        /// Guest Address Number.
+        /// </summary>
+        public string GuestAddressNumber { get; set; }
+
+        /// <summary>
         /// Guest Address Country. 
         /// </summary>
         public string GuestAddressCountry { get; set; }
@@ -126,6 +131,11 @@ namespace BGuest.Integration.Api.Client
         /// Guest identification card issue date. 
         /// </summary>
         public DateTime? GuestIdentificationIssueDate { get; set; }
+
+        /// <summary>
+        /// Guest identification card issuer/issue place.
+        /// </summary>
+        public string GuestIdentificationCardIssuer { get; set; }
 
         /// <summary>
         /// Guest identification card type. 
@@ -333,6 +343,11 @@ namespace BGuest.Integration.Api.Client
         public string GuestAddress { get; set; }
 
         /// <summary>
+        /// Guest Address Number.
+        /// </summary>
+        public string GuestAddressNumber { get; set; }
+
+        /// <summary>
         /// Guest Address Country. 
         /// </summary>
         public string GuestAddressCountry { get; set; }
@@ -366,6 +381,11 @@ namespace BGuest.Integration.Api.Client
         /// Guest identification card issue date. 
         /// </summary>
         public DateTime? GuestIdentificationIssueDate { get; set; }
+
+        /// <summary>
+        /// Guest identification card issuer/issue place.
+        /// </summary>
+        public string GuestIdentificationCardIssuer { get; set; }
 
         /// <summary>
         /// Guest identification card type. 
