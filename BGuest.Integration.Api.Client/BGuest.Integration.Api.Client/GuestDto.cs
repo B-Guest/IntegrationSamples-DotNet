@@ -94,7 +94,7 @@ namespace BGuest.Integration.Api.Client
         /// <summary>
         /// Guest's gender. 1 - Male, 2 - Female
         /// </summary>
-        public int? Gender { get; internal set; }
+        public int? Gender { get; set; }
         /// <summary>
         /// External system Guest id. Place your guest/cardex ID on this field. 
         /// You can refer to guest/cardex later through this key.
