@@ -416,6 +416,11 @@ namespace BGuest.Integration.Api.Client
         /// </summary>
         public IEnumerable<StayImportRoomModel> Rooms { get; set; }
 
+        /// <summary>
+        /// Xml representation of reservation from external integration client.
+        /// </summary>
+        public byte[] IntegrationXmlFile { get; set; }
+
 
         ///// <summary>
         ///// Initializes a new instance of the StayImportModel class.

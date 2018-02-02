@@ -22,6 +22,8 @@
       V2.7.1 - Fixed CheckIn DTO Id field type. It must be string instead of int.
       V2.7.2 - Fixed CheckIn DTO Id field type when setting the checkin as integrated. It must be string instead of int.
       V2.7.3 - Added support to GuestIdentifictionCardIssuer and GuestAddressNumber fields.
+      V2.7.4 - Fixed Guest Gender value mapping.
+      V2.7.5 - Added support for reservation IntegrationXmlFile field.
     </releaseNotes>
 		<copyright>Copyright 2015</copyright>
 		<tags>BGuest Integration Api .Net Client</tags>
