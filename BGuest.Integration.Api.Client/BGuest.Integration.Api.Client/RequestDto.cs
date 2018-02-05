@@ -407,5 +407,9 @@ namespace BGuest.Integration.Api.Client
         /// List of other guests included in Check-in process
         /// </summary>
         public IEnumerable<CheckInGuestDto> OtherGuests { get; set; }
+        /// <summary>
+        /// Xml representation of reservation from external integration client.
+        /// </summary>
+        public byte[] IntegrationXmlFile { get; set; }
     }
 }

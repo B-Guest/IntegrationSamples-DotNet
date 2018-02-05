@@ -24,6 +24,7 @@
       V2.7.3 - Added support to GuestIdentifictionCardIssuer and GuestAddressNumber fields.
       V2.7.4 - Fixed Guest Gender value mapping.
       V2.7.5 - Added support for reservation IntegrationXmlFile field.
+      V2.7.6 - Added IntegrationXmlFile field  to GetCheckInRequestsToIntegrateAsync response object.
     </releaseNotes>
 		<copyright>Copyright 2015</copyright>
 		<tags>BGuest Integration Api .Net Client</tags>
