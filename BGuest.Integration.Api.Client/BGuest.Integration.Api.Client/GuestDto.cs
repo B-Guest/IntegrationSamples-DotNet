@@ -78,7 +78,7 @@ namespace BGuest.Integration.Api.Client
         /// <summary>
         /// Guest Address Number.
         /// </summary>
-        public string GuestAddressNumber { get; set; }
+        public string AddressNumber { get; set; }
         /// <summary>
         /// Guest's zipcode.
         /// </summary>
