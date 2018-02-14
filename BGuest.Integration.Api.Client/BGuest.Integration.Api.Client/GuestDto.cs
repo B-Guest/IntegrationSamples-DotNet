@@ -20,6 +20,10 @@ namespace BGuest.Integration.Api.Client
         /// </summary>
         public string Email { get; set; }
         /// <summary>
+        /// Guest phone number
+        /// </summary>
+        public string Phone { get; set; }
+        /// <summary>
         /// First name
         /// </summary>
         public string FirstName { get; set; }
@@ -88,10 +92,6 @@ namespace BGuest.Integration.Api.Client
         /// </summary>
         public string City { get; set; }
         /// <summary>
-        /// Guest phone number
-        /// </summary>
-        public string Phone { get; set; }
-        /// <summary>
         /// Guest's gender. 1 - Male, 2 - Female
         /// </summary>
         public int? Gender { get; set; }
@@ -115,6 +115,14 @@ namespace BGuest.Integration.Api.Client
         /// City where the guest was born.
         /// </summary>
         public string GuestBirthPlace { get; set; }
+
+        /// <summary>
+        /// Is guest an Adult, Child or baby?. 
+        /// 1 - Adult.
+        /// 2 - Child.
+        /// 3 - Baby.
+        /// </summary>
+        public int? GuestIsAdultChildOrBaby { get; set; }
 
         /// <summary>
         /// Dictionary with optional fields for check-in process by hotel
