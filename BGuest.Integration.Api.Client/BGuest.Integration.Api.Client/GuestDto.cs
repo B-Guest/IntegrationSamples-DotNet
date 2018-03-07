@@ -125,6 +125,36 @@ namespace BGuest.Integration.Api.Client
         public int? GuestIsAdultChildOrBaby { get; set; }
 
         /// <summary>
+        /// External Guest City (don't send City if applied).
+        /// </summary>
+        public string GuestExternalCity { get; set; }
+        
+        /// <summary>
+        /// Guest Address Neighborhood 
+        /// </summary>
+        public string GuestAddressNeighborhood { get; set; }
+        
+        /// <summary>
+        /// Place from arrival
+        /// </summary>
+        public string ExternalArrivalFrom { get; set; }
+        
+        /// <summary>
+        /// Place for next destination
+        /// </summary>
+        public string ExternalNextDestination { get; set; }
+        
+        /// <summary>
+        /// Transport of arrival
+        /// </summary>
+        public string ArrivalVia { get; set; }
+        
+        /// <summary>
+        /// Purpose of the trip/stay
+        /// </summary>
+        public string PurposeOfTrip { get; set; }
+
+        /// <summary>
         /// Dictionary with optional fields for check-in process by hotel
         /// </summary>
         public Dictionary<string, string> CustomFields { get; set; }
