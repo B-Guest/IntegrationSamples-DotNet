@@ -80,9 +80,13 @@ namespace BGuest.Integration.Api.Client
         /// </summary>
         public string Address { get; set; }
         /// <summary>
-        /// Guest's address country.
+        /// Guest's address country alpha2code.
         /// </summary>
         public string AddressCountry { get; set; }
+        /// <summary>
+        /// Guest's address country alpha3code.
+        /// </summary>
+        public string AddressCountryAlpha3Code { get; set; }
         /// <summary>
         /// Guest Address Number.
         /// </summary>

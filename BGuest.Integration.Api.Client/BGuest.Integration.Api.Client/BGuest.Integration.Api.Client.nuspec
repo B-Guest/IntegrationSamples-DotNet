@@ -27,7 +27,7 @@
       V2.7.6 - Added IntegrationXmlFile field  to GetCheckInRequestsToIntegrateAsync response object.
       V2.7.7 - Fixed Guest Address Number field name. Added GuestIsAdultChildOrBaby field to CheckIn Guest DTO.
       V2.7.8 - Added support for following Guest fields in Check-In operations: GuestExternalCity, GuestAddressNeighborhood, ExternalArrivalFrom, ExternalNextDestination, ArrivalVia, PurposeOfTrip
-      v2.7.9- Added CountryAlpha3Code to CheckInRequestDto for GetCheckInRequestsToIntegrateAsync operation.
+      v2.7.9- Added CountryAlpha3Code and AddressCountryAlpha3Code to CheckInRequestDto for GetCheckInRequestsToIntegrateAsync operation.
     </releaseNotes>
 		<copyright>Copyright 2015</copyright>
 		<tags>BGuest Integration Api .Net Client</tags>
