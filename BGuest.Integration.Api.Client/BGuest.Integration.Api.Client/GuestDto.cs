@@ -68,9 +68,13 @@ namespace BGuest.Integration.Api.Client
         /// </summary>
         public DateTime? Birthday { get; set; }
         /// <summary>
-        /// Guest country code.
+        /// Guest country Alpha2code.
         /// </summary>
         public string CountryCode { get; set; }
+        /// <summary>
+        /// Guest country Alpha3code.
+        /// </summary>
+        public string CountryAlpha3Code { get; set; }
         /// <summary>
         /// Guest's address.
         /// </summary>
